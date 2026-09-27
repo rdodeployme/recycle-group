@@ -307,3 +307,43 @@ a.row{transition:background .2s}a.row:hover{background:var(--bg2)}
 .sec.cta .btn-solid:hover{background:transparent;color:var(--ctatext)}
 .sec.cta .tlink{color:var(--ctatext)}
 .sec.cta .tlink:hover{color:var(--ctatext);border-bottom-color:var(--ctatext)}
+
+/* v6 first screen */
+.hero.home{align-items:center;min-height:calc(100vh - 74px - 61px)}
+.hero.home .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);gap:clamp(32px,5vw,88px);align-items:end;padding-top:clamp(64px,9vw,140px);padding-bottom:clamp(40px,5vw,72px)}
+.hero.home .h1{font-size:clamp(26px,3.9vw,60px)}
+.hero.home .sub{font-size:16.5px;max-width:48ch;margin-top:20px}
+.gpanel{position:relative;z-index:1;min-width:0;border-top:1px solid var(--line2);padding:14px 20px 16px;background:rgba(14,17,20,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.gpanel .gp-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:6px}
+.gpanel .gp-head .eyebrow{color:var(--text)}
+.gpanel .gp-head a{font-family:var(--display);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.gpanel .gp-head a:hover{color:var(--text)}
+.gp-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--line);transition:background .2s;text-decoration:none}
+.gp-row:hover{background:rgba(255,255,255,.035)}
+.gp-row .gp-role{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);display:flex;gap:10px}
+.gp-row .gp-role i{font-style:normal;color:var(--green);font-weight:600}
+.gp-row .gp-biz{font-size:13px;line-height:1.5;color:var(--muted)}
+.gp-row .gp-biz b{font-weight:600;color:var(--text)}
+.gp-row .gp-biz span{white-space:nowrap}
+.gp-row .gp-biz span::after{content:"·";color:var(--dim);margin:0 7px}
+.gp-row .gp-biz span:last-child::after{content:""}
+.gp-foot{display:flex;justify-content:space-between;gap:16px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--display);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.logo{flex:0 0 auto}.logo-img{flex:none}
+@media (max-width:1400px){nav.top .wrap{padding-left:32px;padding-right:32px;gap:18px}.logo-img{height:19px}.nav-links{gap:16px;font-size:10.5px}.nav-cta{padding:10px 13px;font-size:10.5px}}
+@media (max-width:1180px){.nav-links{gap:13px;font-size:10px}.logo-img{height:17px}}
+@media (max-width:1020px) and (min-width:901px){.nav-cta{display:none}}
+/* sector marquee */
+.marq{background:var(--lbg);color:var(--ltext);border-top:1px solid var(--lline);border-bottom:1px solid var(--lline);overflow:hidden}
+.marq .wrap{display:flex;align-items:center;gap:0;padding:0 0 0 var(--pad);max-width:none}
+.marq .mq-label{flex:0 0 auto;font-family:var(--display);font-weight:700;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:18px 26px 18px 0;margin-right:10px;border-right:1px solid var(--lline);white-space:nowrap}
+.marq .mq-label i{font-style:normal;color:var(--green)}
+.mq{flex:1 1 auto;overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.mq-track{display:flex;width:max-content;animation:mq 52s linear infinite}.mq-track .dup{display:flex}
+.mq:hover .mq-track{animation-play-state:paused}
+.mq-track a{display:inline-flex;align-items:center;gap:14px;padding:18px 0;margin-right:34px;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ltext);white-space:nowrap;text-decoration:none}
+.mq-track a::before{content:"";width:6px;height:6px;background:var(--green)}
+.mq-track a:hover{color:var(--green)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto}.mq-track .dup{display:none}.mq{mask-image:none}}
+@media (max-width:1100px){.hero.home{min-height:0}.hero.home .wrap{grid-template-columns:1fr;align-items:start}.hero.home .h1{font-size:clamp(26px,6.2vw,96px)}.gpanel{margin-top:8px}}
+@media (max-width:640px){.gp-row{grid-template-columns:1fr;gap:4px;padding:10px 0}.marq .mq-label{display:none}.mq-track a{font-size:12.5px;margin-right:26px}.hero.home .wrap{padding-bottom:28px}}
