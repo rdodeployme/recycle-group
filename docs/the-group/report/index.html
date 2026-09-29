@@ -26,7 +26,7 @@
   <div class="two-col"><div><div class="eyebrow">The role</div><p class="lead" style="margin-top:18px">Yarta is where the group reports. Every collection is weighed and recorded; Yarta turns that into what an organisation needs to see — collections, streams and outcomes by site and by period, with residual reported in full. yes.com.au.</p></div>
   <div><div class="eyebrow">The businesses</div><div class="blist" style="margin-top:18px"><div class="brow"><b>Yarta</b><span>The group's reporting platform — collections, streams and outcomes by site and by period.</span><a href="https://yes.com.au">yes.com.au</a></div></div></div></div>
   <div class="pager"><a href="/recycle-group/the-group/reuse/"><i>Previous role</i><b>Reuse &amp; community</b></a><a href="/recycle-group/the-group/infrastructure/"><i>Next role</i><b>Landfill last</b></a></div>
-</div></section><div class="band gen"><img src="/recycle-group/img/gen-a3-recover-report.webp" alt="Commodities out, evidence back." loading="lazy"><div class="cap"><b>Commodities out, evidence back.</b><span>Yarta · yes.com.au</span></div></div>
+</div></section><div class="band gen vband"><video class="" muted loop playsinline preload="none" poster="/recycle-group/video/v-forklift.jpg" data-src="/recycle-group/video/v-forklift.mp4" aria-label="Commodities out, evidence back."></video><div class="cap"><b>Commodities out, evidence&nbsp;back.</b><span>Yarta · yes.com.au</span></div></div>
 <footer class="site"><div class="wrap">
   <div class="fgrid">
     <div><a href="/recycle-group/"><img class="logo-img" src="/recycle-group/img/recycle-group-logo.png" alt="Recycle Group"></a>
@@ -50,5 +50,10 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
 (function(){var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');if(!t||!l)return;t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 
-</body>
+<script>(function(){var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(rm||!vs.length)return;
+function load(v){if(!v.src){v.src=v.getAttribute('data-src');v.load();}}
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'200px 0px'}):null;
+vs.forEach(function(v){if(io)io.observe(v);else{load(v);v.play();}});})();</script></body>
 </html>

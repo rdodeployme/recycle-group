@@ -26,7 +26,7 @@
   <div class="two-col"><div><div class="eyebrow">The role</div><p class="lead" style="margin-top:18px">Reuse comes before recycling. Recycle Warehouse supplies furniture and household essentials to people in need through charity partners and sells direct to the public in Geelong. Freecycle gives recovered goods a second life. Love Junk is a community reuse marketplace. The group's community work also includes The Streets Barbershop. What the group can keep in use, it keeps in use.</p></div>
   <div><div class="eyebrow">The businesses</div><div class="blist" style="margin-top:18px"><div class="brow"><b>Recycle Warehouse</b><span>Furniture and household essentials supplied to people in need through charity partners, and sold direct to the public. Geelong.</span><a href="https://recyclewarehouse.com.au">recyclewarehouse.com.au</a></div><div class="brow"><b>Freecycle</b><span>Free reuse of recovered goods.</span><em class="tbc" style="margin:0">To confirm</em></div><div class="brow"><b>Love Junk</b><span>Community reuse marketplace.</span><a href="https://lovejunk.com.au">lovejunk.com.au</a></div><div class="brow"><b>The Streets Barbershop</b><span>Part of the group's community work.</span><em class="tbc" style="margin:0">Community</em></div></div></div></div>
   <div class="pager"><a href="/recycle-group/the-group/recovery/"><i>Previous role</i><b>Recover</b></a><a href="/recycle-group/the-group/report/"><i>Next role</i><b>Report</b></a></div>
-</div></section><div class="band gen"><img src="/recycle-group/img/gen-e7-furniture.webp" alt="A second life before recycling." loading="lazy"><div class="cap"><b>A second life before recycling.</b><span>Recycle Warehouse · Freecycle · Love Junk · The Streets Barbershop</span></div></div>
+</div></section><div class="band gen"><img src="/recycle-group/img/gen-e7-furniture.webp" alt="A second life before recycling." loading="lazy"><div class="cap"><b>A second life before&nbsp;recycling.</b><span>Recycle Warehouse · Freecycle · Love Junk · The Streets Barbershop</span></div></div>
 <footer class="site"><div class="wrap">
   <div class="fgrid">
     <div><a href="/recycle-group/"><img class="logo-img" src="/recycle-group/img/recycle-group-logo.png" alt="Recycle Group"></a>
@@ -50,5 +50,10 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
 (function(){var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');if(!t||!l)return;t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 
-</body>
+<script>(function(){var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(rm||!vs.length)return;
+function load(v){if(!v.src){v.src=v.getAttribute('data-src');v.load();}}
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'200px 0px'}):null;
+vs.forEach(function(v){if(io)io.observe(v);else{load(v);v.play();}});})();</script></body>
 </html>

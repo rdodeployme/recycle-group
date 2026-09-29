@@ -391,3 +391,12 @@ a.row.photo2 .tlink{grid-column:3/5;justify-self:start}
 .fsite em{font-style:normal;font-size:12px;color:var(--dim)}
 @media (max-width:1000px){.fgrid{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.fgrid{grid-template-columns:1fr}}
+
+/* v11 motion (Higgsfield · Kling 3.0) */
+.band video,.hero .hvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band video{filter:saturate(.45) contrast(.95);opacity:.8}
+.hero .hvid{filter:saturate(.45) contrast(.95);opacity:.72}
+.hero.home .hvid{object-position:center 60%}
+.band.vband{height:clamp(320px,46vw,620px)}
+.band .cap{z-index:1}
+@media (prefers-reduced-motion:reduce){.band video,.hero .hvid{animation:none}}

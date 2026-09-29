@@ -26,7 +26,7 @@
   <div class="two-col"><div><div class="eyebrow">The role</div><p class="lead" style="margin-top:18px">eCheck is the group's own daily safety, training, policy and compliance system, built in-house and used every shift — daily staff declarations, plant and vehicle pre-start checks with hour-meter photos, incident and fault reporting with manager follow-up, training modules and 62 policies across five departments. The Nunjara Soil Registry sits alongside it.</p></div>
   <div><div class="eyebrow">The businesses</div><div class="blist" style="margin-top:18px"><div class="brow"><b>eCheck</b><span>The group's own daily safety, training, policy and compliance system — pre-start checks, incident reporting, training records, policies.</span><a href="https://echeck.com.au">echeck.com.au</a></div><div class="brow"><b>Nunjara Soil Registry</b><span>The group's soil registry.</span><em class="tbc" style="margin:0">Details to confirm</em></div></div></div></div>
   <div class="pager"><a href="/recycle-group/the-group/infrastructure/"><i>Previous role</i><b>Landfill last</b></a><a href="/recycle-group/initiatives/"><i>Next</i><b>Upcoming initiatives</b></a></div>
-</div></section><div class="band gen"><img src="/recycle-group/img/gen-d1-collect.webp" alt="Safe crews. Every record kept." loading="lazy"><div class="cap"><b>Safe crews. Every record kept.</b><span>eCheck · Nunjara Soil Registry</span></div></div>
+</div></section><div class="band gen vband"><video class="" muted loop playsinline preload="none" poster="/recycle-group/video/v-truck.jpg" data-src="/recycle-group/video/v-truck.mp4" aria-label="Safe crews. Every record kept."></video><div class="cap"><b>Safe crews. Every record&nbsp;kept.</b><span>eCheck · Nunjara Soil Registry</span></div></div>
 <footer class="site"><div class="wrap">
   <div class="fgrid">
     <div><a href="/recycle-group/"><img class="logo-img" src="/recycle-group/img/recycle-group-logo.png" alt="Recycle Group"></a>
@@ -50,5 +50,10 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
 (function(){var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');if(!t||!l)return;t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 
-</body>
+<script>(function(){var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(rm||!vs.length)return;
+function load(v){if(!v.src){v.src=v.getAttribute('data-src');v.load();}}
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'200px 0px'}):null;
+vs.forEach(function(v){if(io)io.observe(v);else{load(v);v.play();}});})();</script></body>
 </html>

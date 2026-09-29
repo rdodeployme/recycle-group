@@ -29,7 +29,7 @@
       <div class="eyebrow" style="margin-top:34px">What you receive</div><ul class="check" style="margin-top:18px"><li>Precinct collection statements</li><li>Diversion reports by period</li><li>Commodity outcome by stream</li></ul></div>
   </div>
   <div class="strip-head"><div class="eyebrow">Typical streams</div><a href="/recycle-group/materials/">What happens to each material →</a></div><div class="strip3 rv"><figure><div class="ph"><img src="/recycle-group/img/gen-e3-cardboard.webp" alt="Cardboard" loading="lazy"></div><figcaption><i>01</i>Cardboard</figcaption></figure><figure><div class="ph"><img src="/recycle-group/img/gen-e4-timber.webp" alt="Timber &amp; pallets" loading="lazy"></div><figcaption><i>02</i>Timber &amp; pallets</figcaption></figure><figure><div class="ph"><img src="/recycle-group/img/gen-e2-eps.webp" alt="Polystyrene" loading="lazy"></div><figcaption><i>03</i>Polystyrene</figcaption></figure></div><div class="pager"><a href="/recycle-group/who-we-work-with/rail/"><i>Previous sector</i><b>National rail and terminal operators</b></a><a href="/recycle-group/who-we-work-with/vessels/"><i>Next sector</i><b>Cargo vessels</b></a></div>
-</div></section><div class="band gen"><img src="/recycle-group/img/gen-a2-process.webp" alt="High volume, one chain of custody." loading="lazy"><div class="cap"><b>High volume, one chain of custody.</b><span>Transfer and sort on the group's own floor</span></div></div>
+</div></section><div class="band gen vband"><video class="" muted loop playsinline preload="none" poster="/recycle-group/video/v-sort.jpg" data-src="/recycle-group/video/v-sort.mp4" aria-label="High volume, one chain of custody."></video><div class="cap"><b>High volume, one chain of&nbsp;custody.</b><span>Transfer and sort on the group's own floor</span></div></div>
 <section class="sec cta"><div class="wrap"><div class="sec-head" style="margin-bottom:0">
   <div><div class="eyebrow">Six steps</div><h2 class="h2">One chain of custody, whatever the&nbsp;sector.</h2></div>
   <div><p class="lead" style="margin-top:0">Site → collection → transfer and sort → processing → reuse and recycling → reporting. The infrastructure is the same; the program is designed around your requirement.</p>
@@ -58,5 +58,10 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
 (function(){var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');if(!t||!l)return;t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 
-</body>
+<script>(function(){var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(rm||!vs.length)return;
+function load(v){if(!v.src){v.src=v.getAttribute('data-src');v.load();}}
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'200px 0px'}):null;
+vs.forEach(function(v){if(io)io.observe(v);else{load(v);v.play();}});})();</script></body>
 </html>
