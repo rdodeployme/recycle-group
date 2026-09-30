@@ -349,6 +349,14 @@ a.row{transition:background .2s}a.row:hover{background:var(--bg2)}
 @media (max-width:1100px){.hero.home{min-height:0}.hero.home .wrap{grid-template-columns:1fr;align-items:start}.hero.home .h1{font-size:clamp(26px,6.2vw,96px)}.gpanel{margin-top:8px}}
 @media (max-width:640px){.gp-row{grid-template-columns:1fr;gap:6px;padding:14px 0}.gp-row .gp-biz{font-size:13.5px;line-height:1.9}.gp-row .gp-biz span::after{margin:0 9px}.marq .mq-label{display:none}.mq-track a{font-size:12.5px;margin-right:26px}.hero.home .wrap{padding-bottom:28px}}
 
+/* v15 materials panel */
+.mp-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:22px}
+.mp-i{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:8px;padding:9px 0;border-top:1px solid var(--line);text-decoration:none;color:inherit;transition:background .2s}
+.mp-i:hover{background:rgba(255,255,255,.04)}
+.mp-i i{grid-row:span 2;font-style:normal;font-family:var(--display);font-size:10.5px;letter-spacing:.1em;color:var(--green);padding-top:2px}
+.mp-i b{font-family:var(--display);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#EEF1F3;line-height:1.3}
+.mp-i span{font-size:12.5px;line-height:1.35;color:var(--dim);margin-top:2px}
+@media (max-width:420px){.mp-grid{grid-template-columns:1fr}}
 /* v15 process flow */
 .pf6{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:1px solid rgba(238,241,243,.18)}
 .pf6 li{position:relative;padding:22px 18px 8px 0;border-right:1px solid rgba(238,241,243,.1)}
@@ -697,7 +705,7 @@ button.btn-solid{cursor:pointer;font-family:var(--display);font-weight:600;font-
 @media (max-width:900px){.wte-cmp{grid-template-columns:1fr}.wte-c,.wte-c+.wte-c{padding:24px 0;border-right:0;border-bottom:1px solid rgba(238,241,243,.1)}.wte-paths ul{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.wte-paths ul{grid-template-columns:1fr}}
 /* ===== v15 plant ===== */
-.pl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.pl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 18px}
 .pl{display:block;color:inherit;text-decoration:none;position:relative}
 .pl-ph{display:block;aspect-ratio:4/3;overflow:hidden;margin-bottom:16px;background:var(--lbg2)}
 .pl-ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.6);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
