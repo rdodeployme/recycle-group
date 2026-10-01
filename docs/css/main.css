@@ -804,11 +804,11 @@ button.btn-solid{cursor:pointer;font-family:var(--display);font-weight:600;font-
 .m-n{position:absolute;top:16px;left:20px;font-family:var(--display);font-size:11px;letter-spacing:.14em;color:rgba(238,241,243,.6);z-index:1}
 .m-name{font-family:var(--display);font-weight:700;font-size:clamp(17px,1.6vw,24px);letter-spacing:-.02em;line-height:1.1;color:#EEF1F3}
 .m0{grid-column:span 2;grid-row:span 2}.m0 .m-name{font-size:clamp(26px,2.6vw,40px)}
-.mosaic{grid-auto-flow:dense}.m3,.m5,.m8,.m10{grid-column:span 2}.m-all{grid-column:span 1}
+.mosaic{grid-auto-flow:dense}.m5,.m10{grid-column:span 2}.m-all{grid-column:span 1}
 .m-all{background:var(--green-deep);justify-content:space-between;align-items:flex-end}
 .m-all::after{display:none}.m-all .m-name{color:#F2F6F7}.m-arrow{position:relative;z-index:1;color:#F2F6F7;font-size:28px}
 .m-all:hover{background:var(--green)}
-@media (max-width:900px){.mosaic{grid-template-columns:1fr 1fr}.m0{grid-column:span 2;grid-row:span 1}.m3,.m5,.m8,.m10{grid-column:span 1}.m-all{grid-column:span 1}}
+@media (max-width:900px){.mosaic{grid-template-columns:1fr 1fr}.m0{grid-column:span 2;grid-row:span 1}.m5,.m10{grid-column:span 1}.m-all{grid-column:span 1}}
 /* proof */
 .proof{background:var(--bg2)}
 .pf-grid{display:grid;grid-template-columns:1fr 1.1fr 1.1fr;gap:clamp(28px,4vw,64px)}
