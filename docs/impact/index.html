@@ -2,8 +2,8 @@
 <html lang="en-AU">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impact dashboard — Recycle Group</title>
-<meta name="description" content="Recycle Group impact dashboard — monthly diversion rate, tonnes by outcome, material streams and markets (demonstration data)."><meta property="og:title" content="Impact dashboard — Recycle Group"><meta property="og:description" content="Recycle Group impact dashboard — monthly diversion rate, tonnes by outcome, material streams and markets (demonstration data)."><meta property="og:type" content="website">
+<title>Impact dashboard | Recycle Group</title>
+<meta name="description" content="Recycle Group impact dashboard: monthly diversion rate, tonnes by outcome, material streams and markets (demonstration data)."><meta property="og:title" content="Impact dashboard | Recycle Group"><meta property="og:description" content="Recycle Group impact dashboard: monthly diversion rate, tonnes by outcome, material streams and markets (demonstration data)."><meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/recycle-group/css/main.css?v=3">
@@ -115,7 +115,7 @@
   </a>
   <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
     <span class="demo-flag">Demo data</span>
-    <div class="freshness"><span class="pulse"></span><span id="freshness">Last depot sync — loading…</span></div>
+    <div class="freshness"><span class="pulse"></span><span id="freshness">Last depot sync: loading…</span></div>
   </div>
 </header>
 
@@ -151,26 +151,26 @@
   <!-- KPI ROW -->
   <div class="grid kpis">
     <div class="kpi hero">
-      <div class="kpi-label">Diversion rate — period</div>
-      <div class="kpi-value" id="kpiRate">—<span class="u">%</span></div>
+      <div class="kpi-label">Diversion rate, period</div>
+      <div class="kpi-value" id="kpiRate">–<span class="u">%</span></div>
       <svg class="spark" id="spkRate" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"></svg>
       <div class="kpi-foot">Reused, recycled or repurposed. <span class="delta" id="kpiRateDelta"></span> on prior period.</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Material handled</div>
-      <div class="kpi-value" id="kpiTonnes">—<span class="u">t</span></div>
+      <div class="kpi-value" id="kpiTonnes">–<span class="u">t</span></div>
       <svg class="spark" id="spkTonnes" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"></svg>
       <div class="kpi-foot">Weighed across the depot network. <span class="delta" id="kpiTonnesDelta"></span> on prior period.</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Diverted from landfill</div>
-      <div class="kpi-value" id="kpiDiverted">—<span class="u">t</span></div>
+      <div class="kpi-value" id="kpiDiverted">–<span class="u">t</span></div>
       <svg class="spark" id="spkDiverted" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"></svg>
       <div class="kpi-foot">Material that never reached a hole in the ground.</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Residual to landfill</div>
-      <div class="kpi-value" id="kpiResidual">—<span class="u">t</span></div>
+      <div class="kpi-value" id="kpiResidual">–<span class="u">t</span></div>
       <svg class="spark" id="spkResidual" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"></svg>
       <div class="kpi-foot">Contaminated, bonded or non-recoverable. Published, not netted off.</div>
     </div>
@@ -241,19 +241,19 @@
   <div class="grid thirds">
     <div class="milestone">
       <div class="milestone-tag">Mattresses · TMRC</div>
-      <div class="milestone-num" id="msMattress">—</div>
+      <div class="milestone-num" id="msMattress">–</div>
       <div class="milestone-label">Mattresses processed this period <span class="perday" id="msPerDay"></span></div>
       <div class="milestone-note">Stripped on site: steel to the smelter, foam to carpet underlay, timber to mulch.</div>
     </div>
     <div class="milestone">
       <div class="milestone-tag">Polystyrene · Styro</div>
-      <div class="milestone-num" id="msPoly">—<span class="u">m³</span></div>
+      <div class="milestone-num" id="msPoly">–<span class="u">m³</span></div>
       <div class="milestone-label">EPS saved from landfill</div>
       <div class="milestone-note">Densified and reprocessed. One 40 ft container of processed EPS represents 6,930 m³.</div>
     </div>
     <div class="milestone">
       <div class="milestone-tag">Equivalent</div>
-      <div class="milestone-num" id="msContainers">—</div>
+      <div class="milestone-num" id="msContainers">–</div>
       <div class="ctn-row" id="ctnRow" aria-hidden="true"></div>
       <div class="milestone-label">40 ft containers of EPS</div>
       <div class="milestone-note">Volume that would otherwise have been buried, expressed as shipping containers.</div>
@@ -263,7 +263,7 @@
   <!-- TABLES -->
   <div class="tables" id="tables">
     <section class="panel" style="margin-top:0;">
-      <table id="tblMonthly"><caption>Monthly diversion — selected period</caption></table>
+      <table id="tblMonthly"><caption>Monthly diversion, selected period</caption></table>
     </section>
     <div class="grid split" style="margin-top:16px;">
       <section class="panel"><table id="tblStreams"><caption>Material streams</caption></table></section>
@@ -277,7 +277,7 @@
     <div class="prov-grid">
       <div>
         <div class="prov-h">Measured, not modelled</div>
-        <p class="prov-p">Every vehicle is weighed in and out at a Recycle Group transfer station. Loads are split at the sorting line and each stream is weighed again before it leaves. The diversion rate is <strong>recovered tonnes divided by received tonnes</strong> — no estimates, no conversion factors.</p>
+        <p class="prov-p">Every vehicle is weighed in and out at a Recycle Group transfer station. Loads are split at the sorting line and each stream is weighed again before it leaves. The diversion rate is <strong>recovered tonnes divided by received tonnes</strong>. No estimates, no conversion factors.</p>
       </div>
       <div>
         <div class="prov-h">Why we can show this</div>
@@ -294,7 +294,7 @@
 
 <footer>
   <p class="foot-meta">
-    DEMO BUILD — all figures on this page are illustrative sample data.<br>
+    DEMO BUILD: all figures on this page are illustrative sample data.<br>
     Replace the <code>RAW</code> object in the page source with a live feed from the weighbridge system to make this real.<br>
     © 2026 Recycle Group Pty Ltd · Diversion methodology available on request.
   </p>
@@ -305,7 +305,7 @@
 <footer class="site"><div class="wrap">
   <div class="fgrid">
     <div><a href="/recycle-group/"><img class="logo-img" src="/recycle-group/img/recycle-group-logo.png" alt="Recycle Group"></a>
-      <p class="fdesc">Recycling solutions for councils, governments, corporations and infrastructure operators — designed, operated and reported on the group's own collection, transfer, processing and reuse infrastructure.</p>
+      <p class="fdesc">Recycling solutions for councils, governments, corporations and infrastructure operators, designed, operated and reported on the group's own collection, transfer, processing and reuse infrastructure.</p>
       <ul class="flist" style="margin-top:18px"><li><a href="mailto:info@recycle.net.au">info@recycle.net.au</a></li><li><a href="tel:0460555222">0460 555 222</a></li><li><a href="/recycle-group/contact/">Partner with us</a></li></ul></div>
     <div class="fsites"><div class="fh">Our sites</div>
       <div class="fsite"><b>Recycle Resource Recovery Centres</b><span>116 Furner Avenue<br>North Geelong VIC 3215</span><em>Transfer station · The Mattress Recycling Company · Styro</em></div>
@@ -330,7 +330,7 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
    ----------------------------------------------------------------
    THIS IS THE ONLY BLOCK THAT NEEDS TO CHANGE TO GO LIVE.
    Swap `RAW` for a fetch() against the weighbridge / ERP export.
-   Expected shape is documented inline below — everything downstream
+   Expected shape is documented inline below, everything downstream
    reads from this object only.
    ================================================================ */
 
@@ -380,9 +380,9 @@ const RAW = {
     { name: "Polystyrene (EPS)",     share: 0.048 },
     { name: "E-waste",               share: 0.039 }
   ],
-  // Conversion constants — confirm before live use
-  mattressKg: 18.1,      // avg mattress weight — CONFIRM. Tuned so the 12-month demo lands on ~250,000 units/yr
-  epsM3PerTonne: 28.4,   // EPS m3 per tonne — CONFIRM. Tuned so the 12-month demo lands on ~41,580 m3/yr
+  // Conversion constants, confirm before live use
+  mattressKg: 18.1,      // avg mattress weight, CONFIRM. Tuned so the 12-month demo lands on ~250,000 units/yr
+  epsM3PerTonne: 28.4,   // EPS m3 per tonne, CONFIRM. Tuned so the 12-month demo lands on ~41,580 m3/yr
   epsM3PerContainer: 6930,
   lastSync: "2026-08-17T05:40:00+10:00"
 };
@@ -593,7 +593,7 @@ function drawContainers(n) {
 }
 
 /* ================================================================
-   5. CHART — monthly diversion rate (single series + target rule)
+   5. CHART, monthly diversion rate (single series + target rule)
    ================================================================ */
 function drawTrend(data) {
   const svg = document.getElementById("trendChart");
@@ -615,7 +615,7 @@ function drawTrend(data) {
     svg.appendChild(txt(M.l - 10, y, fmt1(v) + "%", { anchor: "end", baseline: "middle", size: 10 }));
   }
 
-  // target rule — directly annotated, no legend needed
+  // target rule, directly annotated, no legend needed
   const ty = Y(95);
   svg.appendChild(el("line", { x1: M.l, y1: ty, x2: w - M.r, y2: ty, stroke: C.neutral, "stroke-width": 1.5, "stroke-dasharray": "5 5" }));
   svg.appendChild(txt(w - M.r, ty - 8, "TARGET 95%", { anchor: "end", size: 9, fill: C.neutral, ls: 1.2, weight: 700 }));
@@ -653,7 +653,7 @@ function drawTrend(data) {
     }));
   }
 
-  // x labels — thinned so they never collide
+  // x labels, thinned so they never collide
   const step = Math.ceil(data.length / Math.max(4, Math.floor(iw / 74)));
   data.forEach((d, i) => {
     if (i % step === 0 || i === data.length - 1) {
@@ -681,7 +681,7 @@ function drawTrend(data) {
     }
   }
 
-  // markers >= 8px, 2px surface ring — grey when the month missed target
+  // markers >= 8px, 2px surface ring, grey when the month missed target
   data.forEach((d, i) => {
     const c = el("circle", { cx: X(i), cy: Y(d.rate), r: 4.5, fill: d.rate >= 95 ? C.green : C.neutral, stroke: C.surface, "stroke-width": 2 });
     if (ANIM && RENDER_ANIM) {
@@ -721,7 +721,7 @@ function drawTrend(data) {
 }
 
 /* ================================================================
-   6. CHART — outcome stack (ordinal ramp + residual status colour)
+   6. CHART, outcome stack (ordinal ramp + residual status colour)
    ================================================================ */
 function drawHierarchy(data) {
   const svg = document.getElementById("hierChart");
@@ -783,7 +783,7 @@ function drawHierarchy(data) {
 }
 
 /* ================================================================
-   7. CHART — material streams (single-hue magnitude)
+   7. CHART, material streams (single-hue magnitude)
    ================================================================ */
 function drawStreams(data) {
   const svg = document.getElementById("streamChart");
@@ -829,7 +829,7 @@ function drawStreams(data) {
 }
 
 /* ================================================================
-   8. CHART — regions (single-hue magnitude + rate label)
+   8. CHART, regions (single-hue magnitude + rate label)
    ================================================================ */
 function drawRegions(data) {
   const svg = document.getElementById("regionChart");
@@ -932,7 +932,7 @@ function render(animate = true) {
   setDelta("kpiTonnesDelta", prev ? ((tonnes - sum(prev, "total")) / sum(prev, "total")) * 100 : null, "%");
 
   document.getElementById("trendMeta").textContent =
-    cur[0].label + " — " + cur[cur.length - 1].label + (state.region === "ALL" ? " · all regions" : " · " + state.region);
+    cur[0].label + " to " + cur[cur.length - 1].label + (state.region === "ALL" ? " · all regions" : " · " + state.region);
 
   const mattTonnes = diverted * RAW.streams.find(s => s.name === "Mattresses").share;
   const epsTonnes  = diverted * RAW.streams.find(s => s.name === "Polystyrene (EPS)").share;
@@ -941,12 +941,12 @@ function render(animate = true) {
   setNum("msPoly", epsM3, fmt, '<span class="u">m³</span>');
   setNum("msContainers", epsM3 / RAW.epsM3PerContainer, fmt);
 
-  // context under the milestones — derived arithmetic only, no new claims
+  // context under the milestones, derived arithmetic only, no new claims
   const perDay = (mattTonnes * 1000 / RAW.mattressKg) / (state.period * 30.44);
   document.getElementById("msPerDay").textContent = "· ≈ " + fmt(perDay) + " a day";
   drawContainers(epsM3 / RAW.epsM3PerContainer);
 
-  // KPI sparklines — the same months the big charts show
+  // KPI sparklines, the same months the big charts show
   drawSpark("spkRate", cur.map(d => d.rate), "#4F9DAB");
   drawSpark("spkTonnes", cur.map(d => d.total), "#4F9DAB");
   drawSpark("spkDiverted", cur.map(d => d.total - d.residual), "#4F9DAB");
@@ -978,7 +978,7 @@ document.getElementById("csvBtn").addEventListener("click", () => {
   const rows = [["month","market","received_t","reused_t","recycled_t","repurposed_t","residual_t","diversion_pct"]];
   cur.forEach(d => rows.push([d.month, state.region, d.total.toFixed(2), d.reused.toFixed(2),
     d.recycled.toFixed(2), d.repurposed.toFixed(2), d.residual.toFixed(2), d.rate.toFixed(2)]));
-  rows.push([]); rows.push(["# DEMO DATA — illustrative sample only, not weighbridge figures"]);
+  rows.push([]); rows.push(["# DEMO DATA: illustrative sample only, not weighbridge figures"]);
   const blob = new Blob([rows.map(r => r.join(",")).join("\n")], { type: "text/csv" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
@@ -999,7 +999,7 @@ document.getElementById("tableToggle").addEventListener("click", e => {
   const mins = Math.max(1, Math.round((Date.now() - d.getTime()) / 60000));
   const ago = mins < 60 ? mins + " min ago" : Math.round(mins / 60) + " hr ago";
   document.getElementById("freshness").textContent =
-    "Last depot sync — " + d.toLocaleString("en-AU", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }) + " · " + ago;
+    "Last depot sync: " + d.toLocaleString("en-AU", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }) + " · " + ago;
 })();
 
 /* ---- entrance: panels rise in once, top to bottom ---- */

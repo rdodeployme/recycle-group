@@ -2,8 +2,8 @@
 <html lang="en-AU">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Recycle Group</title>
-<meta name="description" content="Partner with Recycle Group — Nigel Taylor, Director Corporate & Trade Recycling."><meta property="og:title" content="Contact — Recycle Group"><meta property="og:description" content="Partner with Recycle Group — Nigel Taylor, Director Corporate & Trade Recycling."><meta property="og:type" content="website">
+<title>Contact | Recycle Group</title>
+<meta name="description" content="Partner with Recycle Group. Nigel Taylor, Director Corporate & Trade Recycling."><meta property="og:title" content="Contact | Recycle Group"><meta property="og:description" content="Partner with Recycle Group. Nigel Taylor, Director Corporate & Trade Recycling."><meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/recycle-group/css/main.css?v=3">
@@ -45,13 +45,13 @@
   <div class="pb-b-sec"><div class="pb-b-h">What the program includes</div><ul id="bInc"><li class="pb-empty">Pick a sector to see what a program includes.</li></ul></div>
   <div class="pb-b-sec"><div class="pb-b-h">Streams and where they go</div><table id="bStreams"><tbody><tr><td class="pb-empty">Pick the streams involved.</td></tr></tbody></table></div>
   <div class="pb-b-sec"><div class="pb-b-h">What you get back</div><ul id="bRep"><li class="pb-empty">Pick your reporting needs.</li></ul></div>
-  <div class="pb-b-sec"><div class="pb-b-h">How it runs</div><ol class="pb-b-how"><li>Stream audit and program design, agreed before it starts</li><li>Collection by the group's own crews and fleet</li><li>Every load weighed in and out at a Recycle Group facility</li><li>Each stream sent down its agreed pathway — reuse first, landfill only as the final step</li><li>Diversion = recovered tonnes ÷ received tonnes, residual reported in full</li></ol></div>
-  <div class="pb-b-foot">Indicative outline only — scope and pricing are confirmed with Recycle Group. info@recycle.net.au · 0460 555 222</div>
+  <div class="pb-b-sec"><div class="pb-b-h">How it runs</div><ol class="pb-b-how"><li>Stream audit and program design, agreed before it starts</li><li>Collection by the group's own crews and fleet</li><li>Every load weighed in and out at a Recycle Group facility</li><li>Each stream sent down its agreed pathway: reuse first, landfill only as the final step</li><li>Diversion = recovered tonnes ÷ received tonnes, residual reported in full</li></ol></div>
+  <div class="pb-b-foot">Indicative outline only. Scope and pricing are confirmed with Recycle Group. info@recycle.net.au · 0460 555 222</div>
 </aside>
 </div></div></section>
 <section class="sec pb-talk"><div class="wrap"><div class="pb-talk-g">
   <div><div class="eyebrow">Prefer to talk?</div><h2 class="h2">Speak to the corporate &amp; trade&nbsp;team.</h2></div>
-  <div class="pb-talk-c"><div><i>Corporate &amp; trade recycling</i><b>Nigel Taylor</b><span>Director — Corporate &amp; Trade Recycling</span><a href="tel:0427888222">0427 888 222</a></div>
+  <div class="pb-talk-c"><div><i>Corporate &amp; trade recycling</i><b>Nigel Taylor</b><span>Director, Corporate &amp; Trade Recycling</span><a href="tel:0427888222">0427 888 222</a></div>
     <div><i>Enquiries</i><a href="tel:0460555222">0460 555 222</a><a href="mailto:info@recycle.net.au">info@recycle.net.au</a></div>
     <div><i>Head office</i><span>116 Furner Avenue<br>North Geelong VIC 3215</span></div></div>
 </div></div></section>
@@ -63,32 +63,32 @@ function val(n){var e=f.elements[n];return e?(e.value||'').trim():''}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function data(){var s=vals('sector')[0]||'';return {sector:s,sectorName:B.names[s]||'',streams:vals('streams'),sites:val('sites'),where:val('where'),volume:vals('volume')[0]||'',freq:vals('freq')[0]||'',reports:vals('reports'),name:val('name'),org:val('org'),email:val('email'),phone:val('phone'),notes:val('notes')}}
 function render(){var d=data();
- $('bTitle').textContent=d.org?('Program brief — '+d.org):'Your program';
+ $('bTitle').textContent=d.org?('Program brief: '+d.org):'Your program';
  var meta=[['Sector',d.sectorName],['Sites',d.sites?(d.sites+(d.where?' · '+d.where:'')):d.where],['Volume',d.volume],['Frequency',d.freq]].filter(function(m){return m[1]});
  $('bMeta').innerHTML=meta.map(function(m){return '<div><i>'+m[0]+'</i><b>'+esc(m[1])+'</b></div>'}).join('');
- var inc=B.inc[d.sector];$('bInc').innerHTML=inc?inc.map(function(x){return '<li>'+x+'</li>'}).join(''):'<li class="pb-empty">'+(d.sector==='other'?'Described in your notes — the team will scope it with you.':'Pick a sector to see what a program includes.')+'</li>';
+ var inc=B.inc[d.sector];$('bInc').innerHTML=inc?inc.map(function(x){return '<li>'+x+'</li>'}).join(''):'<li class="pb-empty">'+(d.sector==='other'?'Described in your notes. The team will scope it with you.':'Pick a sector to see what a program includes.')+'</li>';
  $('bStreams').innerHTML='<tbody>'+(d.streams.length?d.streams.map(function(s){var p=B.paths[s]||['',''];return '<tr><th>'+esc(s)+'</th><td><b>'+esc(p[0])+'</b><span>'+p[1]+'</span></td></tr>'}).join(''):'<tr><td class="pb-empty">Pick the streams involved.</td></tr>')+'</tbody>';
  $('bRep').innerHTML=d.reports.length?d.reports.map(function(x){return '<li>'+esc(x)+'</li>'}).join(''):'<li class="pb-empty">Pick your reporting needs.</li>';}
-function text(){var d=data(),L=[];L.push('PROGRAM BRIEF'+(d.org?' — '+d.org:''));L.push('');
- L.push('Sector: '+(d.sectorName||'—'));L.push('Sites: '+(d.sites||'—')+(d.where?' ('+d.where+')':''));L.push('Volume: '+(d.volume||'—'));L.push('Frequency: '+(d.freq||'—'));L.push('');
- L.push('Streams:');d.streams.forEach(function(s){var p=B.paths[s]||[''];L.push(' - '+s+' → '+p[0])});if(!d.streams.length)L.push(' - —');L.push('');
- L.push('Reporting needed:');d.reports.forEach(function(r){L.push(' - '+r)});if(!d.reports.length)L.push(' - —');L.push('');
+function text(){var d=data(),L=[];L.push('PROGRAM BRIEF'+(d.org?': '+d.org:''));L.push('');
+ L.push('Sector: '+(d.sectorName||'–'));L.push('Sites: '+(d.sites||'–')+(d.where?' ('+d.where+')':''));L.push('Volume: '+(d.volume||'–'));L.push('Frequency: '+(d.freq||'–'));L.push('');
+ L.push('Streams:');d.streams.forEach(function(s){var p=B.paths[s]||[''];L.push(' - '+s+' → '+p[0])});if(!d.streams.length)L.push(' - –');L.push('');
+ L.push('Reporting needed:');d.reports.forEach(function(r){L.push(' - '+r)});if(!d.reports.length)L.push(' - –');L.push('');
  L.push('Contact: '+[d.name,d.org,d.email,d.phone].filter(Boolean).join(' · '));if(d.notes){L.push('');L.push('Notes: '+d.notes)}return L.join('\n');}
 function msg(t,ok){var m=$('pbMsg');m.textContent=t;m.className='pb-msg'+(ok?' ok':' err');}
 f.addEventListener('change',render);f.addEventListener('input',render);render();
 f.addEventListener('submit',function(e){e.preventDefault();var d=data();
  if(!d.sector){msg('Pick who the program is for (step 1).');return}if(!d.streams.length){msg('Pick at least one material stream (step 2).');return}
  if(!d.name||(!d.email&&!d.phone)){msg('Add your name and an email or phone number (step 5).');return}
- var subj='Program enquiry — '+(d.org||d.name)+' ('+d.sectorName+')';
+ var subj='Program enquiry: '+(d.org||d.name)+' ('+d.sectorName+')';
  location.href='mailto:info@recycle.net.au?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(text());
- msg('Your email app should open with the brief filled in — press send. If nothing opens, use "Copy brief" and email it to info@recycle.net.au.',true);});
+ msg('Your email app should open with the brief filled in. Press send. If nothing opens, use "Copy brief" and email it to info@recycle.net.au.',true);});
 $('pbPrint').addEventListener('click',function(){document.body.classList.add('pb-printing');window.print();setTimeout(function(){document.body.classList.remove('pb-printing')},500)});
-$('pbCopy').addEventListener('click',function(){var t=text();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){msg('Brief copied.',true)},function(){msg('Copy failed — select the brief and copy it manually.')})});
+$('pbCopy').addEventListener('click',function(){var t=text();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){msg('Brief copied.',true)},function(){msg('Copy failed. Select the brief and copy it manually.')})});
 })();</script>
 <footer class="site"><div class="wrap">
   <div class="fgrid">
     <div><a href="/recycle-group/"><img class="logo-img" src="/recycle-group/img/recycle-group-logo.png" alt="Recycle Group"></a>
-      <p class="fdesc">Recycling solutions for councils, governments, corporations and infrastructure operators — designed, operated and reported on the group's own collection, transfer, processing and reuse infrastructure.</p>
+      <p class="fdesc">Recycling solutions for councils, governments, corporations and infrastructure operators, designed, operated and reported on the group's own collection, transfer, processing and reuse infrastructure.</p>
       <ul class="flist" style="margin-top:18px"><li><a href="mailto:info@recycle.net.au">info@recycle.net.au</a></li><li><a href="tel:0460555222">0460 555 222</a></li><li><a href="/recycle-group/contact/">Partner with us</a></li></ul></div>
     <div class="fsites"><div class="fh">Our sites</div>
       <div class="fsite"><b>Recycle Resource Recovery Centres</b><span>116 Furner Avenue<br>North Geelong VIC 3215</span><em>Transfer station · The Mattress Recycling Company · Styro</em></div>

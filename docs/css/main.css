@@ -1,5 +1,5 @@
 
-/* Recycle Group — dark corporate system (RG Resources design language) */
+/* Recycle Group: dark corporate system (RG Resources design language) */
 :root{--bg:#0E1114;--bg2:#14181C;--bg3:#1C2126;--line:rgba(238,241,243,.1);--line2:rgba(238,241,243,.2);--text:#EEF1F3;--muted:rgba(238,241,243,.64);--dim:rgba(238,241,243,.4);--green:#3B8493;--green-deep:#1F5561;--lbg:#ECEFF1;--lbg2:#E2E6E9;--lbg3:#D6DBDF;--ltext:#0E1114;--lmuted:rgba(14,17,20,.68);--ldim:rgba(14,17,20,.46);--lline:rgba(14,17,20,.12);--lline2:rgba(14,17,20,.22);--cta:#1F5561;--ctatext:#F2F6F7;--ctamuted:rgba(242,246,247,.78);--ctaline:rgba(242,246,247,.28);--display:"Archivo",-apple-system,"Segoe UI",sans-serif;--body:"Inter",-apple-system,"Segoe UI",sans-serif;--pad:clamp(22px,5.5vw,104px);--max:1440px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -210,7 +210,7 @@ nav.top .wrap{display:flex;align-items:center;justify-content:space-between;heig
 .ccard .crow a:hover{color:var(--green)}
 .ask{list-style:none;margin-top:28px;border-top:1px solid var(--line2)}
 .ask li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;display:grid;grid-template-columns:28px 1fr;gap:12px;color:var(--muted)}
-.ask li::before{content:"—";color:var(--green)}
+.ask li::before{content:"–";color:var(--green)}
 
 /* footer */
 footer.site{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--bg)}
