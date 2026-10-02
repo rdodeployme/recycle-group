@@ -66,5 +66,5 @@ var vs=[].slice.call(document.querySelectorAll('video[data-src]'));if(rm||!vs.le
 function load(v){if(!v.src){v.src=v.getAttribute('data-src');v.load();}}
 var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
 if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});}else if(!v.paused){v.pause();}});},{rootMargin:'200px 0px'}):null;
-vs.forEach(function(v){if(io)io.observe(v);else{load(v);v.play();}});})();</script><script src="/recycle-group/js/three.min.js" defer></script><script src="/recycle-group/js/scale3d.js" defer></script></body>
+vs.forEach(function(v){if(io)io.observe(v);else{load(v);v.play();}});})();</script><script src="/recycle-group/js/three.min.js" defer></script><script src="/recycle-group/js/scale3d.js" defer></script><script src="/recycle-group/js/polish.js" defer></script></body>
 </html>
