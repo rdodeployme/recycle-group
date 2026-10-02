@@ -31,6 +31,41 @@
   }
 
   var BUILD = {
+    // 250,000 mattresses laid flat across the MCG playing surface
+    mcg: function (scene) {
+      ground(scene, 150);
+      var A = 86, B = 74;
+      function ell(a, b) { var sh = new T.Shape(); sh.absellipse(0, 0, a, b, 0, Math.PI * 2, false, 0); return sh; }
+      var field = new T.Mesh(new T.ShapeGeometry(ell(A, B), 64), std(0x5f7a4a, { roughness: 1 })); field.rotation.x = -Math.PI / 2; field.position.y = 0.05; scene.add(field);
+      [[4, 16, 7], [18, 32, 15], [32, 46, 24]].forEach(function (tr, i) {
+        var sh = ell(A + tr[1], B + tr[1]); sh.holes.push(ell(A + tr[0], B + tr[0]));
+        var g = new T.ExtrudeGeometry(sh, { depth: tr[2], bevelEnabled: false, curveSegments: 72 });
+        var m = new T.Mesh(g, [std(i === 2 ? 0x9a9ea3 : 0x8a8f95, { roughness: 0.9 }), std(0x6d7278, { roughness: 0.9 })]); m.rotation.x = -Math.PI / 2; scene.add(m);
+      });
+      for (var i = 0; i < 6; i++) { var a = i / 6 * Math.PI * 2 + 0.5, pole = new T.Mesh(new T.CylinderGeometry(0.8, 1.2, 70, 8), std(0x7c868d)); pole.position.set(Math.cos(a) * (A + 52), 35, Math.sin(a) * (B + 52)); scene.add(pole);
+        var hd = new T.Mesh(new T.BoxGeometry(9, 5, 2), std(0x5b6770)); hd.position.set(pole.position.x, 71, pole.position.z); hd.lookAt(0, 71, 0); scene.add(hd); }
+      var c = document.createElement('canvas'); c.width = 64; c.height = 256; var x = c.getContext('2d');
+      for (var k = 0; k < 256; k += 8) { x.fillStyle = (k / 8) % 2 ? '#efe9dc' : '#b3a994'; x.fillRect(0, k, 64, 8); }
+      var tex = new T.CanvasTexture(c); tex.wrapS = tex.wrapT = T.RepeatWrapping; tex.repeat.set(0.02, 40 / 32); tex.encoding = T.sRGBEncoding;
+      var mass = new T.Mesh(new T.ExtrudeGeometry(ell(A - 1.5, B - 1.5), { depth: 1, bevelEnabled: false, curveSegments: 72 }),
+        [std(0xe3d9c6, { roughness: 0.95 }), new T.MeshStandardMaterial({ map: tex, roughness: 0.95 })]);
+      mass.rotation.x = -Math.PI / 2; mass.position.y = 0.06; mass.scale.z = 0.001; scene.add(mass);
+      return { r: 115, el: 0.62, look: new T.Vector3(0, 6, 0), ang: 0.6, dur: 5,
+        update: function (t) { var k = ease((t - 0.5) / 3.6); mass.scale.z = Math.max(0.001, k * 9.9); } };
+    },
+    // 41,580 m³ of loose polystyrene = 17 Olympic pools
+    pools: function (scene) {
+      ground(scene, 190);
+      var rim = std(0x7c8187, { roughness: 0.9 }), foamM = std(0xf1f0ea, { roughness: 1 }), fills = [], fe = new T.LineBasicMaterial({ color: 0x3B8493 });
+      for (var i = 0; i < 17; i++) {
+        var gx = i % 6, gz = Math.floor(i / 6), x = -165 + gx * 66, z = -32 + gz * 32;
+        [[0, 13.1, 52, 0.6], [0, -13.1, 52, 0.6], [25.7, 0, 0.6, 26.8], [-25.7, 0, 0.6, 26.8]].forEach(function (r) { var b = new T.Mesh(new T.BoxGeometry(r[2], 2.2, r[3]), rim); b.position.set(x + r[0], 1.1, z + r[1]); scene.add(b); });
+        var water = new T.Mesh(new T.BoxGeometry(50, 0.1, 25), std(0x3B8493, { roughness: 0.3 })); water.position.set(x, 0.05, z); scene.add(water);
+        var f = new T.Mesh(new T.BoxGeometry(50, 2, 25), foamM); f.position.set(x, 0, z); f.scale.y = 0.001; f.add(new T.LineSegments(new T.EdgesGeometry(f.geometry), fe)); scene.add(f); fills.push(f);
+      }
+      return { r: 125, el: 0.62, look: new T.Vector3(0, 0, 0), ang: 0.4, dur: 5,
+        update: function (t) { fills.forEach(function (f, i) { var k = ease((t - 0.3 - i * 0.18) / 0.7); f.scale.y = Math.max(0.001, k); f.position.y = k; }); } };
+    },
     // 126 t = four 40-ft containers at max gross weight (30.48 t each)
     port: function (scene) {
       ground(scene, 26);
@@ -126,8 +161,8 @@
     host.appendChild(canvas); host.classList.add('has3d');
     r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75)); r.outputEncoding = T.sRGBEncoding; r.toneMapping = T.ACESFilmicToneMapping;
     var scene = new T.Scene();
-    scene.add(new T.HemisphereLight(0xffffff, 0x9d9b93, 0.55));
-    var key = new T.DirectionalLight(0xffffff, 1.45); key.position.set(30, 60, 40); scene.add(key);
+    scene.add(new T.HemisphereLight(0xffffff, 0x9d9b93, 0.45));
+    var key = new T.DirectionalLight(0xffffff, 1.2); key.position.set(30, 60, 40); scene.add(key);
     var rim = new T.DirectionalLight(PET, 0.45); rim.position.set(-40, 20, -30); scene.add(rim);
     var cfg = BUILD[kind](scene);
     var cam = new T.PerspectiveCamera(32, 1, 0.1, 2000);
@@ -150,7 +185,7 @@
     size();
     if (window.ResizeObserver) new ResizeObserver(size).observe(host);
     return {
-      play: function () { if (running) return; running = !reduce; if (reduce) { frame(performance.now()); return; } requestAnimationFrame(frame); },
+      play: function () { if (running) return; t0 = null; running = !reduce; if (reduce) { frame(performance.now()); return; } requestAnimationFrame(frame); },
       stop: function () { running = false; }
     };
   }

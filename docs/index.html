@@ -32,6 +32,16 @@
       <div class="nx-i rv"><b data-count="99">99</b><i>%</i><span class="nx-l">recovery rate on every mattress</span><span class="nx-c">Victoria was landfilling 160,000 a year</span></div>
       <div class="nx-i rv"><b>41,580</b><i>m³</i><span class="nx-l">of polystyrene densified in twelve months</span><span class="nx-c">About 17 Olympic pools of foam</span></div>
     </div>
+    <div class="nx3d" id="nx3d">
+      <div class="nx3d-tabs" role="tablist"><button type="button" role="tab" class="on" data-k="0" aria-selected="true">250,000 mattresses vs the MCG</button><button type="button" role="tab" data-k="1" aria-selected="false">41,580 m³ of polystyrene</button></div>
+      <div class="nx3d-stage">
+        <div class="nx3d-v on" data-s3d="mcg"><span class="s3d-cap"><b>To scale</b>A year of mattresses laid flat across the MCG: about 40 deep, close to 10 m high. Between 23 and 57 deep, depending on mattress size.</span></div>
+        <div class="nx3d-v" data-s3d="pools"><span class="s3d-cap"><b>To scale</b>Twelve months of loose polystyrene: 17 Olympic swimming pools of foam, densified at our plant.</span></div>
+      </div>
+    </div>
+    <script>(function(){var r=document.getElementById('nx3d');if(!r)return;var ok=false;try{var c=document.createElement('canvas');ok=!!(window.WebGLRenderingContext&&(c.getContext('webgl')||c.getContext('experimental-webgl')));}catch(e){}
+if(!ok){r.style.display='none';return;}var B=r.querySelectorAll('.nx3d-tabs button'),V=r.querySelectorAll('.nx3d-v');
+B.forEach(function(b,i){b.addEventListener('click',function(){B.forEach(function(x,j){x.classList.toggle('on',j===i);x.setAttribute('aria-selected',j===i?'true':'false')});V.forEach(function(v,j){v.classList.toggle('on',j===i)});});});})();</script>
   </div>
 </section>
 <section class="sec light four svc">
@@ -139,5 +149,5 @@ if(e.isIntersecting){load(v);var p=v.play();if(p&&p.catch)p.catch(function(){});
 vs.forEach(function(v){if(io)io.observe(v);else{load(v);v.play();}});})();</script><script>(function(){var el=document.querySelector('.nm-n');if(!el||!('IntersectionObserver' in window))return;
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;var done=false,to=+el.getAttribute('data-count');
 new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;o.disconnect();var t0=null;
-function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);}el.textContent='0';requestAnimationFrame(f);}});},{threshold:.4}).observe(el);})();</script><script src="/recycle-group/js/three.min.js" defer></script><script src="/recycle-group/js/hero3d.js" defer></script></body>
+function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);}el.textContent='0';requestAnimationFrame(f);}});},{threshold:.4}).observe(el);})();</script><script src="/recycle-group/js/three.min.js" defer></script><script src="/recycle-group/js/hero3d.js" defer></script><script src="/recycle-group/js/scale3d.js" defer></script></body>
 </html>
