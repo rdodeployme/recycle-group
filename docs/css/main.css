@@ -704,6 +704,24 @@ button.btn-solid{cursor:pointer;font-family:var(--display);font-weight:600;font-
 .wte-src{margin-top:20px;font-size:12px;color:rgba(238,241,243,.4)}
 @media (max-width:900px){.wte-cmp{grid-template-columns:1fr}.wte-c,.wte-c+.wte-c{padding:24px 0;border-right:0;border-bottom:1px solid rgba(238,241,243,.1)}.wte-paths ul{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.wte-paths ul{grid-template-columns:1fr}}
+/* ===== v21 3D map ===== */
+.sm-map.has3d{position:relative;min-height:560px;background:radial-gradient(90% 80% at 50% 45%,#141b20 0%,#0E1114 75%)}
+.sm-map.has3d #smSvg{opacity:0;pointer-events:none}
+.sm-map .m3d-c{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sm-map .m3d-tag{all:unset;position:absolute;left:0;top:0;cursor:pointer;white-space:nowrap;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(14,17,20,.72);border:1px solid rgba(95,208,224,.45);padding:6px 10px;z-index:2}
+.sm-map .m3d-tag.on{background:var(--green);border-color:var(--green)}
+.sm-map .m3d-tag:focus-visible{outline:2px solid #fff}
+.sm-map.has3d .sm-reset{z-index:3}
+@media(max-width:900px){.sm-map.has3d{min-height:420px}}
+/* ===== v20 scale scenes ===== */
+.cs-ph[data-s3d].has3d{background:radial-gradient(120% 90% at 50% 40%,#fbfaf7 0%,#e9e8e2 70%,#dedcd5 100%)}
+.cs-ph[data-s3d].has3d img{opacity:0}
+.cs-ph .s3d-c{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cs-ph .s3d-cap{display:none;position:absolute;left:14px;right:14px;bottom:12px;font-size:12.5px;line-height:1.4;color:rgba(14,17,20,.66);z-index:1}
+.cs-ph .s3d-cap b{display:inline-block;font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin-right:8px}
+.cs-ph.has3d .s3d-cap{display:block}
+.cs-ph[data-s3d]{min-height:380px}
+@media(max-width:900px){.cs-ph[data-s3d]{min-height:300px}}
 /* ===== v19 3D ===== */
 .hero.home canvas.h3d{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero.home.has3d .photo,.hero.home.has3d .hvid{display:none}
