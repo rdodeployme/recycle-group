@@ -704,6 +704,48 @@ button.btn-solid{cursor:pointer;font-family:var(--display);font-weight:600;font-
 .wte-src{margin-top:20px;font-size:12px;color:rgba(238,241,243,.4)}
 @media (max-width:900px){.wte-cmp{grid-template-columns:1fr}.wte-c,.wte-c+.wte-c{padding:24px 0;border-right:0;border-bottom:1px solid rgba(238,241,243,.1)}.wte-paths ul{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.wte-paths ul{grid-template-columns:1fr}}
+/* ===== v18 case studies ===== */
+@media (max-width:1600px){.nav-links{gap:18px;letter-spacing:.1em}}
+@media (max-width:1400px){.nav-links{gap:14px;letter-spacing:.08em}}
+@media (max-width:1180px){.nav-links{gap:11px;letter-spacing:.06em;font-size:9.5px}}
+
+.cs-sec .crumb{margin-bottom:28px}
+.cs-idx{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px}
+.cs-idx a{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(14,17,20,.18);padding:10px 14px;color:#0E1114;text-decoration:none}
+.cs-idx a span{color:var(--deep);margin-right:8px}.cs-idx a:hover{border-color:var(--green)}
+.cs{display:grid;grid-template-columns:5fr 7fr;gap:48px;padding:56px 0;border-top:1px solid rgba(14,17,20,.14);scroll-margin-top:90px}
+.cs-ph{position:relative;min-height:320px}.cs-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cs-h{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.02;letter-spacing:-.015em;text-transform:uppercase;margin:14px 0 10px}
+.cs-client{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep)}
+.cs-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:28px 0}
+.cs-cols h3{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.cs-cols p,.cs-cols li{font-size:15px;line-height:1.55;color:rgba(14,17,20,.78)}
+.cs-cols ul{list-style:none;padding:0;display:grid;gap:8px}.cs-cols li{padding-left:18px;position:relative}
+.cs-cols li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--green)}
+.cs-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;border-top:2px solid #0E1114}
+.cs-n{padding:18px 18px 4px 0;container-type:inline-size;min-width:0}
+.cs-n b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(38px,22cqi,72px);line-height:.95;letter-spacing:-.03em;color:var(--deep);white-space:nowrap}
+.cs-n b i{font-style:normal;font-size:.42em;margin-left:4px;letter-spacing:0}
+.cs-n span{display:block;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-top:10px}
+.cs-n em{display:block;font-style:normal;font-size:13.5px;color:rgba(14,17,20,.62);margin-top:6px;line-height:1.4}
+.cs-basis{font-size:12px;color:rgba(14,17,20,.5);margin:18px 0 20px}
+.cs-note{font-size:13px;color:rgba(14,17,20,.55);padding-top:28px;border-top:1px solid rgba(14,17,20,.14)}
+.cs-inline{background:var(--light);color:#0E1114}
+.cs-inline-h{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.cs-inline .cs{border-top:0;padding-bottom:0}
+@media(max-width:900px){.cs{grid-template-columns:1fr;gap:24px;padding:40px 0}.cs-ph{min-height:220px}.cs-cols{grid-template-columns:1fr;gap:20px}}
+/* home case strip */
+.hcs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.hcs a{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(14,17,20,.1);color:#0E1114;text-decoration:none;transition:border-color .2s,transform .2s}
+.hcs a:hover{border-color:var(--green);transform:translateY(-2px)}
+.hcs .hcs-ph{aspect-ratio:16/9;overflow:hidden}.hcs .hcs-ph img{width:100%;height:100%;object-fit:cover}
+.hcs .hcs-tx{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.hcs .hcs-k{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--deep)}
+.hcs b{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;color:#0E1114}
+.hcs b i{font-style:normal;font-size:.45em;margin-left:4px}
+.hcs .hcs-l{font-size:14.5px;line-height:1.45;color:rgba(14,17,20,.75);flex:1}
+.hcs em{font-style:normal;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+@media(max-width:900px){.hcs{grid-template-columns:1fr}}
 /* ===== v17 our businesses ===== */
 .ob-cards.ts-cards{grid-template-columns:repeat(3,1fr)}
 @media(max-width:900px){.ob-cards.ts-cards{grid-template-columns:1fr}}
