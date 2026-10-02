@@ -704,6 +704,11 @@ button.btn-solid{cursor:pointer;font-family:var(--display);font-weight:600;font-
 .wte-src{margin-top:20px;font-size:12px;color:rgba(238,241,243,.4)}
 @media (max-width:900px){.wte-cmp{grid-template-columns:1fr}.wte-c,.wte-c+.wte-c{padding:24px 0;border-right:0;border-bottom:1px solid rgba(238,241,243,.1)}.wte-paths ul{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.wte-paths ul{grid-template-columns:1fr}}
+/* n2o concept image */
+.cs-ph.cs-fit{display:block;background:#0E1114;min-height:320px}
+.cs-ph.cs-fit img{object-fit:contain!important;padding:10px}
+.cs-ph.cs-fit .cs-zoom{position:absolute;left:12px;bottom:10px;font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(14,17,20,.75);padding:6px 10px}
+.cs-ph.cs-fit:hover .cs-zoom{background:var(--green)}
 /* ===== v22 numbers in 3D ===== */
 .nx3d{margin-top:48px}
 .nx3d-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}

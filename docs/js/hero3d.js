@@ -19,7 +19,7 @@
   host.classList.add('has3d');
   var vid = host.querySelector('.hvid'); if (vid) { try { vid.pause(); } catch (e) {} vid.removeAttribute('autoplay'); }
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   renderer.outputEncoding = T.sRGBEncoding;
   renderer.toneMapping = T.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -121,14 +121,12 @@
   }
 
   // timeline: chaos → sort → hold → release, looping
-  var CYCLE = 15, start = performance.now();
+  var start = performance.now();
+  // one smooth sort after load, then the bales hold; no repeating burst
   function phase(t) {
     if (reduce) return 1;
-    var u = t % CYCLE;
-    if (u < 2.6) return 0;
-    if (u < 6.4) return (u - 2.6) / 3.8;
-    if (u < 12.8) return 1;
-    return 1 - (u - 12.8) / 2.2;
+    if (t < 1.4) return 0;
+    return Math.min(1, (t - 1.4) / 5.5);
   }
   function ease(x) { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); }
 
@@ -150,7 +148,7 @@
     var t = (now - start) / 1000;
     var target = phase(t);
     if (hover >= 0) target = 1;
-    P += (target - P) * (hover >= 0 ? 0.08 : 0.06);
+    P += (target - P) * (hover >= 0 ? 0.06 : 0.035);
     for (var k = 0; k < 12; k++) { hiT[k] = hover === k ? 1 : 0; hi[k] += (hiT[k] - hi[k]) * 0.12; }
     var anyHi = hover >= 0 ? 1 : 0;
 
@@ -158,14 +156,14 @@
       var mesh = meshes[k], arr = data[k], lift = hi[k] * 0.55;
       for (var i = 0; i < arr.length; i++) {
         var d = arr[i];
-        var e = ease((P - d.d) / 0.62);
+        var e = ease((P - d.d) / 0.62); e = e * e * (3 - 2 * e);
         var ang = d.a + t * d.sp;
-        vC.set(layout.cloud.x + Math.cos(ang) * d.rad, d.y + Math.sin(t * 0.6 + d.a) * 0.25, layout.cloud.z + Math.sin(ang) * d.rad * 0.45);
+        vC.set(layout.cloud.x + Math.cos(ang) * d.rad, d.y + Math.sin(t * 0.35 + d.a) * 0.18, layout.cloud.z + Math.sin(ang) * d.rad * 0.45);
         baleSpot(k, d.cell, vT); vT.y += lift;
         vPos.copy(vC).lerp(vT, e);
-        vPos.y += Math.sin(e * Math.PI) * 0.9;
+        vPos.y += Math.sin(e * Math.PI) * 0.6;
         tmp.position.copy(vPos);
-        ea.set(d.rx + t * d.tx, d.ry + t * d.ty, d.rz); qa.setFromEuler(ea);
+        ea.set(d.rx + t * d.tx * 0.45, d.ry + t * d.ty * 0.45, d.rz); qa.setFromEuler(ea);
         ea.set(TYPES[k].lie ? Math.PI / 2 : 0, d.yaw, TYPES[k].lie ? Math.PI / 2 : 0); qb.setFromEuler(ea);
         tmp.quaternion.copy(qa).slerp(qb, e);
         var sc = 1 + hi[k] * 0.06; tmp.scale.set(sc, sc, sc);
@@ -178,8 +176,8 @@
       pads[k].material.opacity = 0.05 * P + hi[k] * 0.22;
     }
 
-    mouse.sx += (mouse.x - mouse.sx) * 0.05; mouse.sy += (mouse.y - mouse.sy) * 0.05;
-    cam.position.set(layout.camPos.x + mouse.sx * 1.4 + Math.sin(t * 0.12) * 0.5, layout.camPos.y - mouse.sy * 0.8, layout.camPos.z);
+    mouse.sx += (mouse.x - mouse.sx) * 0.025; mouse.sy += (mouse.y - mouse.sy) * 0.025;
+    cam.position.set(layout.camPos.x + mouse.sx * 0.8 + Math.sin(t * 0.06) * 0.35, layout.camPos.y - mouse.sy * 0.4, layout.camPos.z);
     cam.lookAt(layout.look);
     renderer.render(scene, cam);
   }
