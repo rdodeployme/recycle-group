@@ -118,9 +118,13 @@
     var cfg; try { cfg = JSON.parse(root.getAttribute('data-reel')); } catch (e) { return; }
     var rows = cfg.rows || [], items = [].slice.call(d.querySelectorAll('[data-reel-i]'));
     var cap = d.querySelector('.reel-cap'), num = cap && cap.querySelector('i'), name = cap && cap.querySelector('b'), line = cap && cap.querySelector('.reel-bar i');
-    if (reduce) { v.removeAttribute('autoplay'); v.src = cfg.src + (narrow ? '-m' : '') + '.mp4'; v.addEventListener('loadeddata', function () { v.currentTime = 1; }); return; }
-    v.src = cfg.src + (narrow ? '-m' : '') + '.mp4'; v.muted = true; v.loop = true; v.playsInline = true;
-    var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+    if (reduce) { v.pause(); v.removeAttribute('autoplay'); v.addEventListener('loadeddata', function () { v.currentTime = 1; }); return; }
+    if (!v.currentSrc && !v.querySelector('source')) v.src = cfg.src + (narrow ? '-m' : '') + '.mp4';
+    v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+    function go() { if (!v.paused) return; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    go(); v.addEventListener('loadedmetadata', go); v.addEventListener('canplay', go);
+    // browsers that hold autoplay back (power saving, data saver) start on the first interaction
+    ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach(function (ev) { addEventListener(ev, go, { passive: true, once: true }); });
     var lastI = -1;
     function tick() {
       var t = v.currentTime, i = 0; for (var k = 0; k < rows.length; k++) if (t >= rows[k].t) i = k;
@@ -135,7 +139,7 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
-    d.addEventListener('visibilitychange', function () { if (d.hidden) v.pause(); else v.play().catch(function () {}); });
+    d.addEventListener('visibilitychange', function () { if (d.hidden) v.pause(); else go(); });
   }
 
   function boot() {
