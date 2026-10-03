@@ -32,21 +32,35 @@
     };
   }
   function Autoplay(v, host, list, dur, onTime) {
-    var frame = host.querySelector('.fx-frame') || host, st = Stills(frame, list), fb = false, ok = false, want = false, t0 = 0, raf = 0, timer = 0;
-    function clock() { var t = ((performance.now() - t0) / 1000) % dur; st.show(t); onTime(t); raf = fb && want ? requestAnimationFrame(clock) : 0; }
-    function fallback() { if (fb || ok || !st.ok) return; fb = true; host.classList.add('fx-still'); t0 = performance.now(); if (want && !raf) raf = requestAnimationFrame(clock); }
+    // 1. play normally. 2. if the browser refuses, drive the film frame by frame by seeking
+    //    (browsers that block autoplay still allow seeking, which is how the scroll films work).
+    // 3. only if no video data arrives at all, cross-fade the key frames.
+    var frame = host.querySelector('.fx-frame') || host, st = Stills(frame, list), mode = '', ok = false, want = false, t0 = 0, raf = 0, timer = 0, since = 0;
+    function clock() {
+      var now = performance.now(), t = ((now - t0) / 1000) % dur;
+      if (mode === 'seek') {
+        if (v.readyState >= 1 && !v.seeking) { var dt = t - v.currentTime; if (dt > 0.04 || dt < -0.5) { try { v.currentTime = t; } catch (e) {} } }
+        if (now - since > 5000 && v.readyState < 2 && st.ok) { mode = 'stills'; host.classList.add('fx-still'); }
+      }
+      if (mode === 'stills') st.show(t);
+      onTime(t);
+      raf = mode && want ? requestAnimationFrame(clock) : 0;
+    }
+    function fallback() {
+      if (mode || ok) return; mode = 'seek'; since = performance.now(); t0 = since - (v.currentTime || 0) * 1000; v.preload = 'auto';
+      if (want && !raf) raf = requestAnimationFrame(clock);
+    }
     if (!v.paused && v.readyState > 2) ok = true;
-    v.addEventListener('playing', function () { ok = true; if (fb) { fb = false; host.classList.remove('fx-still'); st.clear(); } });
+    v.addEventListener('playing', function () { ok = true; if (mode) { mode = ''; host.classList.remove('fx-still'); st.clear(); } });
     function attempt() {
       if (!want) return;
       var pr; try { pr = v.play(); } catch (e) { fallback(); return; }
-      if (pr && pr.catch) pr.catch(function () { fallback(); });
-      clearTimeout(timer); timer = setTimeout(function () { if (want && v.paused && !ok) fallback(); }, 3500);
+      // only a refusal counts; a play interrupted by scrolling away (AbortError) is simply retried next time
+      if (pr && pr.catch) pr.catch(function (e) { if (e && e.name === 'NotAllowedError') fallback(); else if (want) { clearTimeout(timer); timer = setTimeout(attempt, 400); } });
     }
-    // a tap or key press counts as permission in every browser: try the real film again
-    ['pointerdown', 'touchend', 'keydown'].forEach(function (ev) { addEventListener(ev, function () { if (fb && want) attempt(); }, { passive: true }); });
+    ['pointerdown', 'touchend', 'keydown'].forEach(function (ev) { addEventListener(ev, function () { if (mode && want) attempt(); }, { passive: true }); });
     return {
-      start: function () { want = true; attempt(); if (fb && !raf) raf = requestAnimationFrame(clock); },
+      start: function () { want = true; if (mode) { t0 = performance.now() - (v.currentTime || 0) * 1000; if (!raf) raf = requestAnimationFrame(clock); } else attempt(); },
       stop: function () { want = false; clearTimeout(timer); v.pause(); }
     };
   }
@@ -152,8 +166,8 @@
     var cfg; try { cfg = JSON.parse(root.getAttribute('data-reel')); } catch (e) { return; }
     var rows = cfg.rows || [], items = [].slice.call(d.querySelectorAll('[data-reel-i]'));
     var cap = d.querySelector('.reel-cap'), num = cap && cap.querySelector('i'), name = cap && cap.querySelector('b'), line = cap && cap.querySelector('.reel-bar i');
-    if (reduce) { v.pause(); v.removeAttribute('autoplay'); v.addEventListener('loadeddata', function () { v.currentTime = 1; }); return; }
-    if (!v.currentSrc && !v.querySelector('source')) v.src = cfg.src + (narrow ? '-m' : '') + '.mp4';
+    if (reduce) { v.removeAttribute('autoplay'); v.src = cfg.src + (narrow ? '-m' : '') + '.mp4'; v.addEventListener('loadeddata', function () { v.pause(); v.currentTime = 1; }); return; }
+    v.src = cfg.src + (narrow ? '-m' : '') + '.mp4';
     v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
     var clockT = 0, usingStills = false;
     var ap = Autoplay(v, root, cfg.stills, cfg.dur, function (t) { usingStills = true; clockT = t; });
