@@ -123,33 +123,53 @@
   S.developer = function (g, W, H, p) { return pools(g, W, H, p, 60000, 20000, '■ 20,000 m³ RETURNED TO THE SITE AS LANDSCAPING', 'TOPSOIL TAKEN ON · ONE DEVELOPER'); };
 
   // Three 40 ft containers of loose foam densified at ≈102 : 1 (6,930 m³ loose per container of product).
-  S.tunnel = function (g, W, H, p, t) {
-    var c = g.c, narrow = W < 640, pad = narrow ? 16 : 30, L = 12.19, Hc = 2.59, inner = 67.7, ratio = 6930 / inner;
-    var dense = 3 * inner / ratio, side = Math.cbrt(dense);
-    var scale = (W - pad * 2) / (L + 6.5), gy = H - (narrow ? 70 : 78), k = ease(seg(p, .25, .8));
-    g.text('ELEVATION · 3 × 40 ft CONTAINERS · LOOSE EPS', pad, 26, { col: 'rgba(14,17,20,.5)' });
-    var r = rnd(7), cw = L * scale, ch = Hc * scale, bx = pad + cw + 3.2 * scale, bs = side * scale;
+  S.tunnel = function (g, W, H, p) {
+    // dark drawing to sit in the dark Materials sheet; everything to true scale
+    var c = g.c, narrow = W < 520, pad = narrow ? 14 : 26, L = 12.19, Hc = 2.59, inner = 67.7, ratio = 6930 / inner;
+    var dense = 3 * inner / ratio, side = Math.cbrt(dense), LT = function (a) { return 'rgba(238,241,243,' + a + ')'; };
+    c.fillStyle = '#14181C'; c.fillRect(0, 0, W, H);
+    c.strokeStyle = 'rgba(238,241,243,.035)'; c.lineWidth = 1; c.beginPath();
+    for (var gx = 24; gx < W; gx += 24) { c.moveTo(gx + .5, 0); c.lineTo(gx + .5, H); } for (var gy0 = 24; gy0 < H; gy0 += 24) { c.moveTo(0, gy0 + .5); c.lineTo(W, gy0 + .5); } c.stroke();
+    var k = ease(seg(p, .2, .78)), bk = ease(seg(p, .35, .85));
+    var top = narrow ? 58 : 66, gy = H - (narrow ? 44 : 50);
+    var scale = Math.min((W - pad * 2) / (L + 4.6), (gy - top) / (3 * Hc + 1.2)), cw = L * scale, ch = Hc * scale, gap = Math.max(4, .25 * scale);
+    var bx = pad + cw + 1.6 * scale, bs = side * scale, px = bx + bs + .9 * scale;
+    // header
+    g.text('3 × 40 FT CONTAINERS · LOOSE EPS', pad, 24, { col: LT(.55) });
+    var vol = 3 * inner * (1 - k) + dense * k;
+    g.text(vol > 10 ? Math.round(vol) + ' m³' : vol.toFixed(1) + ' m³', W - pad, 30, { al: 'right', col: '#fff', f: '700 ' + (narrow ? 20 : 26) + 'px ' + DISP });
+    g.text(k > .97 ? 'DENSIFIED · ≈ ' + Math.round(ratio) + ' : 1' : 'LOOSE', W - pad, 46, { al: 'right', col: k > .97 ? '#7FB3BE' : LT(.55) });
+    // containers + foam
+    var r = rnd(11), cell = Math.max(5, scale * .42);
     for (var n = 0; n < 3; n++) {
-      var y0 = gy - (n + 1) * (ch + 6);
-      g.hair(.5); c.strokeRect(pad + .5, y0 + .5, cw, ch);
-      g.hair(.08); c.beginPath(); for (var q = 1; q < 24; q++) { c.moveTo(pad + q * cw / 24 + .5, y0 + 2); c.lineTo(pad + q * cw / 24 + .5, y0 + ch - 2); } c.stroke();
-      for (var i = 0; i < 70; i++) {
-        var sx = pad + 4 + r() * (cw - 14), sy = y0 + 3 + r() * (ch - 10), w = 6 + r() * 7, h = 4 + r() * 4, del = r() * .35;
-        var u = ease(clamp((k - del) / .65, 0, 1)), tx = bx + r() * (bs - 4), ty = gy - bs + r() * (bs - 3);
-        var x = sx + (tx - sx) * u, y = sy + (ty - sy) * u - Math.sin(u * Math.PI) * 40, s = 1 - u * .9;
-        c.fillStyle = 'rgba(236,234,227,' + (1 - u * .6) + ')'; c.strokeStyle = 'rgba(14,17,20,.35)'; c.lineWidth = .6;
-        c.fillRect(x, y, w * s, h * s); if (s > .3) c.strokeRect(x + .5, y + .5, w * s, h * s);
+      var y0 = gy - (n + 1) * ch - n * gap;
+      c.strokeStyle = LT(.06); c.beginPath(); for (var q = 1; q < 28; q++) { var xx = Math.round(pad + q * cw / 28) + .5; c.moveTo(xx, y0 + 2); c.lineTo(xx, y0 + ch - 2); } c.stroke();
+      var cols = Math.floor((cw - 4) / cell), rows = Math.floor((ch - 4) / (cell * .7));
+      for (var a = 0; a < cols; a++) for (var b = 0; b < rows; b++) {
+        var sx = pad + 2 + a * cell + r() * 1.5, sy = y0 + 2 + b * cell * .7 + r() * 1.2, del = (a / cols) * .55 + r() * .12;
+        var u = ease(clamp((k - del) / .4, 0, 1)); if (u >= 1) continue;
+        var tx = bx + r() * bs, ty = gy - bs + r() * bs;
+        var x = sx + (tx - sx) * u, y = sy + (ty - sy) * u - Math.sin(u * Math.PI) * 26, sc = 1 - u * .85;
+        c.fillStyle = 'rgba(236,234,227,' + (.82 - u * .4) + ')'; c.fillRect(x, y, (cell - 1.2) * sc, (cell * .7 - 1.2) * sc);
       }
+      c.setLineDash(k > .9 ? [4, 4] : []); c.strokeStyle = LT(k > .9 ? .3 : .6); c.strokeRect(pad + .5, y0 + .5, cw, ch); c.setLineDash([]);
     }
-    g.hair(.5); c.beginPath(); c.moveTo(pad, gy + .5); c.lineTo(W - pad, gy + .5); c.stroke();
-    var bk = ease(seg(p, .55, .9)); c.fillStyle = 'rgba(220,218,210,' + bk + ')'; c.fillRect(bx, gy - bs * bk, bs, bs * bk);
-    g.hair(.6 * bk); c.strokeRect(bx + .5, gy - bs + .5, bs, bs);
-    g.person(bx + bs + 14, gy, 1.8 * scale);
-    g.dimH(pad, pad + cw, gy + 18, '12.19 m');
-    g.dimH(bx, bx + bs, gy + 18, side.toFixed(2) + ' m', bk);
-    g.text('≈ ' + Math.round(ratio) + ' : 1', bx - 6, gy - bs - 14, { col: DEEP, al: 'left' });
-    g.big(num(3 * inner * (1 - k) + dense * k, 0) + ' m³', W - pad, 40, narrow ? 22 : 26, { al: 'right' });
-    g.text(k > .98 ? 'DENSIFIED' : 'LOOSE', W - pad, 58, { al: 'right' });
+    // ground
+    c.strokeStyle = LT(.45); c.beginPath(); c.moveTo(pad, gy + .5); c.lineTo(W - pad, gy + .5); c.stroke();
+    // dense block + figure
+    c.fillStyle = 'rgba(236,234,227,' + (.95 * bk) + ')'; c.fillRect(bx, gy - bs * bk, bs, bs * bk);
+    c.strokeStyle = 'rgba(127,179,190,' + bk + ')'; c.strokeRect(bx + .5, gy - bs + .5, bs - 1, bs - 1);
+    var ph = 1.8 * scale; g.person(px, gy, ph, LT(.9));
+    // dimensions
+    function dimH(x1, x2, y, lab, al) {
+      c.save(); c.globalAlpha = al == null ? 1 : al; c.strokeStyle = LT(.5); c.lineWidth = 1; c.beginPath();
+      c.moveTo(x1, y + .5); c.lineTo(x2, y + .5); c.moveTo(x1 + .5, y - 4); c.lineTo(x1 + .5, y + 5); c.moveTo(x2 - .5, y - 4); c.lineTo(x2 - .5, y + 5); c.stroke();
+      c.font = MONO; var w = c.measureText(lab).width + 10, m = (x1 + x2) / 2; c.fillStyle = '#14181C'; c.fillRect(m - w / 2, y - 7, w, 14);
+      g.text(lab, m, y + 4, { al: 'center', col: LT(.85) }); c.restore();
+    }
+    dimH(pad, pad + cw, gy + 20, '12.19 m');
+    dimH(bx, bx + bs, gy + 20, side.toFixed(2) + ' m', bk);
+    g.text('1.8 m', px, gy - ph - 8, { al: 'center', col: LT(.6), f: '500 9px "IBM Plex Mono", monospace' });
   };
 
   // Weighbridge ticket → stream split → outcome table (sample layout).
