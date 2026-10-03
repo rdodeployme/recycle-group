@@ -1197,7 +1197,7 @@ html body .sec.cta .tlink:hover{color:#EEF1F3;border-bottom-color:var(--acc)}
 .nxp-t2 b{font-size:12px;margin:0}
 .nxp-t3{left:76%;top:76%}
 .nxp-t4{left:67.5%;top:28%}
-@media(max-width:720px){.nxp.nxp-eps img{object-position:50% 50%}}
+@media(max-width:720px){.nxp.nxp-eps img{object-position:38% 50%}}
 .nxp-dim{left:64.6%;top:2.5%;height:66%;width:1px}
 .nxp-dim i{position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--acc)}
 .nxp-dim i::before,.nxp-dim i::after{content:"";position:absolute;left:-6px;width:13px;height:1px;background:var(--acc)}
