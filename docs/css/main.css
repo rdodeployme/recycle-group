@@ -1119,9 +1119,14 @@ a.ob-c:hover{border-color:var(--green);transform:translateY(-2px)}
 @keyframes rcIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .reel-bar{flex:1;height:1px;background:rgba(255,255,255,.2);position:relative;overflow:hidden;min-width:60px}
 .reel-bar i{position:absolute;inset:0;background:#3B8493;transform:scaleX(0);transform-origin:left}
-.mpanel .mp-i{transition:background-color .5s ease,box-shadow .5s ease}
-.mpanel .mp-i i,.mpanel .mp-i b{transition:color .5s ease}
-.mpanel .mp-i.lit{background:rgba(59,132,147,.16);box-shadow:inset 2px 0 0 #3B8493}
+.mpanel .mp-i{position:relative;isolation:isolate}
+.mpanel .mp-i i,.mpanel .mp-i b,.mpanel .mp-i span{transition:color .6s ease}
+/* highlight sits in its own layer, inset from the row rule and padded out into the column gap, so text never touches it */
+.mpanel .mp-i::before{content:"";position:absolute;z-index:-1;top:1px;bottom:0;left:-10px;right:-10px;background:linear-gradient(90deg,rgba(59,132,147,.22),rgba(59,132,147,.08));opacity:0;transition:opacity .7s ease}
+.mpanel .mp-i::after{content:"";position:absolute;top:1px;bottom:0;left:-10px;width:2px;background:#3B8493;transform:scaleY(0);transform-origin:top;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.mpanel .mp-i.lit::before{opacity:1}
+.mpanel .mp-i.lit::after{transform:scaleY(1)}
+.mpanel .mp-i.lit span{color:rgba(238,241,243,.78)}
 .mpanel .mp-i.lit i{color:#7FB3BE}.mpanel .mp-i.lit b{color:#fff}
 @media(max-width:900px){.reel-cap{display:none}}
 /* measured drawings */
