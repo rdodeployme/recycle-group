@@ -14,7 +14,7 @@
   var cam = new T.PerspectiveCamera(34, 1, 1, 6000);
   scene.add(new T.HemisphereLight(0xdfe8ea, 0x0b0d10, 0.75));
   var key = new T.DirectionalLight(0xffffff, 1.1); key.position.set(-300, 900, 500); scene.add(key);
-  var rim = new T.DirectionalLight(0x3B8493, 0.9); rim.position.set(600, 300, -700); scene.add(rim);
+  var rim = new T.DirectionalLight(0x8F603F, 0.9); rim.position.set(600, 300, -700); scene.add(rim);
 
   var CX = 449, CZ = 414, land = new T.Group(); scene.add(land);
   var HOT = { VI: 1, QL: 1 };
@@ -29,14 +29,14 @@
       var shape = new T.Shape(pts);
       var h = hot ? 16 : 9;
       var geo = new T.ExtrudeGeometry(shape, { depth: h, bevelEnabled: false });
-      var mat = [new T.MeshStandardMaterial({ color: new T.Color(hot ? 0x2c6e7a : 0x27313a).convertSRGBToLinear(), roughness: 0.75, metalness: 0.05 }),
-                 new T.MeshStandardMaterial({ color: new T.Color(hot ? 0x1F5561 : 0x161c20).convertSRGBToLinear(), roughness: 0.8 })];
+      var mat = [new T.MeshStandardMaterial({ color: new T.Color(hot ? 0x774c2f : 0x27313a).convertSRGBToLinear(), roughness: 0.75, metalness: 0.05 }),
+                 new T.MeshStandardMaterial({ color: new T.Color(hot ? 0x5E3A22 : 0x161c20).convertSRGBToLinear(), roughness: 0.8 })];
       var m = new T.Mesh(geo, mat); m.rotation.x = -Math.PI / 2; land.add(m);
-      var edges = new T.LineSegments(new T.EdgesGeometry(geo, 30), new T.LineBasicMaterial({ color: hot ? 0x6fb3c0 : 0x3a4a52, transparent: true, opacity: hot ? 0.9 : 0.6 }));
+      var edges = new T.LineSegments(new T.EdgesGeometry(geo, 30), new T.LineBasicMaterial({ color: hot ? 0xbd9172 : 0x3a4a52, transparent: true, opacity: hot ? 0.9 : 0.6 }));
       edges.rotation.x = -Math.PI / 2; land.add(edges);
     });
   });
-  var grid = new T.GridHelper(2400, 60, 0x1f3a40, 0x161d22); grid.position.y = -0.5; grid.material.transparent = true; grid.material.opacity = 0.55; scene.add(grid);
+  var grid = new T.GridHelper(2400, 60, 0x3f2d20, 0x161d22); grid.position.y = -0.5; grid.material.transparent = true; grid.material.opacity = 0.55; scene.add(grid);
 
   // pins from the SVG
   var pins = [], tags = [];
@@ -44,11 +44,11 @@
     var m = /translate\(([-\d.]+),([-\d.]+)\)/.exec(g.getAttribute('transform')); if (!m) return;
     var x = +m[1] - CX, z = +m[2] - CZ, idx = g.getAttribute('data-p');
     var lab = svg.querySelector('.sm-lab[data-p="' + idx + '"]');
-    var beam = new T.Mesh(new T.CylinderGeometry(1.6, 1.6, 70, 16, 1, true), new T.MeshBasicMaterial({ color: 0x5fd0e0, transparent: true, opacity: 0.55, depthWrite: false }));
+    var beam = new T.Mesh(new T.CylinderGeometry(1.6, 1.6, 70, 16, 1, true), new T.MeshBasicMaterial({ color: 0xdb9564, transparent: true, opacity: 0.55, depthWrite: false }));
     beam.position.set(x, 16 + 35, z); scene.add(beam);
-    var head = new T.Mesh(new T.SphereGeometry(4.2, 20, 16), new T.MeshStandardMaterial({ color: 0xffffff, emissive: 0x3B8493, emissiveIntensity: 1.2 }));
+    var head = new T.Mesh(new T.SphereGeometry(4.2, 20, 16), new T.MeshStandardMaterial({ color: 0xffffff, emissive: 0x8F603F, emissiveIntensity: 1.2 }));
     head.position.set(x, 16 + 70, z); scene.add(head);
-    var ring = new T.Mesh(new T.RingGeometry(5, 7, 40), new T.MeshBasicMaterial({ color: 0x5fd0e0, transparent: true, opacity: 0.8, side: T.DoubleSide, depthWrite: false }));
+    var ring = new T.Mesh(new T.RingGeometry(5, 7, 40), new T.MeshBasicMaterial({ color: 0xdb9564, transparent: true, opacity: 0.8, side: T.DoubleSide, depthWrite: false }));
     ring.rotation.x = -Math.PI / 2; ring.position.set(x, 16.6, z); scene.add(ring);
     var tag = document.createElement('button'); tag.type = 'button'; tag.className = 'm3d-tag'; tag.textContent = lab ? lab.textContent : '';
     tag.dataset.side = lab && lab.getAttribute('text-anchor') === 'end' ? 'l' : 'r'; tag.dataset.dy = lab ? (lab.getAttribute('data-dy') || 0) : 0;

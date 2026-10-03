@@ -4,7 +4,7 @@
    <div class="dw" data-dw="mcg|pools|developer|tunnel|report|streams" ...></div> */
 (function () {
   var d = document, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var INK = '#0E1114', PET = '#3B8493', DEEP = '#1F5561', MONO = '500 11px "IBM Plex Mono", ui-monospace, Menlo, monospace',
+  var INK = '#0E1114', PET = '#8F603F', DEEP = '#5E3A22', MONO = '500 11px "IBM Plex Mono", ui-monospace, Menlo, monospace',
       DISP = '"Archivo", system-ui, sans-serif';
   var MAT = { e1: ['Mattresses', '#CFC8B8'], e2: ['Polystyrene', '#ECEAE3'], e3: ['Cardboard', '#A88A60'], e4: ['Timber', '#8A6A44'],
     e5: ['Metals', '#8F989E'], e6: ['Organics', '#6D7A52'], e7: ['Furniture', '#6B5A4A'], e8: ['Soil', '#5A4632'], res: ['Residual', '#2D3439'] };
@@ -58,10 +58,10 @@
     // fill
     c.save(); c.beginPath(); c.ellipse(cx, cy, rx, ry, 0, 0, 7); c.clip();
     var reach = (cx - rx) + sweep * (rx * 2 + 2);
-    c.fillStyle = 'rgba(59,132,147,.16)'; c.fillRect(cx - rx, cy - ry, Math.max(0, reach - (cx - rx)), ry * 2);
+    c.fillStyle = 'rgba(143,96,63,.16)'; c.fillRect(cx - rx, cy - ry, Math.max(0, reach - (cx - rx)), ry * 2);
     var mw = 2.03 / 173 * rx * 2;
     if (mw >= 2) { g.hair(.12); c.beginPath(); for (var x = cx - rx; x < reach; x += mw) { c.moveTo(x + .5, cy - ry); c.lineTo(x + .5, cy + ry); } c.stroke(); }
-    if (lk > 0) { c.fillStyle = 'rgba(31,85,97,' + (.6 * lk) + ')'; c.fillRect(cx - rx, cy - ry, rx * 2, ry * 2); }
+    if (lk > 0) { c.fillStyle = 'rgba(94,58,34,' + (.6 * lk) + ')'; c.fillRect(cx - rx, cy - ry, rx * 2, ry * 2); }
     c.restore();
     g.hair(.75); c.beginPath(); c.ellipse(cx, cy, rx, ry, 0, 0, 7); c.stroke();
     g.hair(.4); c.strokeRect(cx - 1.5, cy - 10 / 73 * ry, 3, 20 / 73 * ry);
@@ -76,9 +76,9 @@
     g.text('SECTION · STACK HEIGHT', ex, narrow ? topY - 10 : 30, { col: 'rgba(14,17,20,.5)' });
     var mPx = (gy - topY) / 14.6, bw = Math.min(ew * .42, 150), bx = ex + 4;
     g.hair(.5); c.beginPath(); c.moveTo(ex, gy + .5); c.lineTo(ex + ew, gy + .5); c.stroke();
-    c.save(); c.beginPath(); c.rect(bx, gy - 14 * mPx, bw, 8 * mPx); c.clip(); c.fillStyle = 'rgba(59,132,147,.08)'; c.fillRect(bx, gy - 14 * mPx, bw, 8 * mPx);
+    c.save(); c.beginPath(); c.rect(bx, gy - 14 * mPx, bw, 8 * mPx); c.clip(); c.fillStyle = 'rgba(143,96,63,.08)'; c.fillRect(bx, gy - 14 * mPx, bw, 8 * mPx);
     g.hair(.12); c.beginPath(); for (var k2 = -300; k2 < 400; k2 += 7) { c.moveTo(bx + k2, gy); c.lineTo(bx + k2 + 300, gy - 300); } c.stroke(); c.restore();
-    g.text('RANGE 6–14 m', bx + 6, gy - 14 * mPx + 14, { col: 'rgba(31,85,97,.85)' });
+    g.text('RANGE 6–14 m', bx + 6, gy - 14 * mPx + 14, { col: 'rgba(94,58,34,.85)' });
     c.fillStyle = DEEP; c.fillRect(bx, gy - hNow * mPx, bw, hNow * mPx);
     c.strokeStyle = 'rgba(255,255,255,.2)'; c.lineWidth = 1; c.beginPath(); for (var l = 1; l < layers; l++) { var yy = Math.round(gy - l * .25 * mPx) + .5; c.moveTo(bx, yy); c.lineTo(bx + bw, yy); } c.stroke();
     var px = bx + bw + 22; g.person(px, gy, 1.8 * mPx);
@@ -102,7 +102,7 @@
     for (var i = 0; i < full; i++) {
       var x = pad + (i % cols) * (pw + gap), y = top + Math.floor(i / cols) * (ph + gap), f = clamp(fill - i, 0, 1);
       c.fillStyle = 'rgba(14,17,20,.03)'; c.fillRect(x, y, pw, ph);
-      if (f > 0) { var hl = hi && i < Math.ceil(hi / 2500) && hiK > 0; c.fillStyle = hl ? 'rgba(31,85,97,' + (.55 + .35 * hiK) + ')' : 'rgba(59,132,147,.42)'; c.fillRect(x, y, pw * f, ph); }
+      if (f > 0) { var hl = hi && i < Math.ceil(hi / 2500) && hiK > 0; c.fillStyle = hl ? 'rgba(94,58,34,' + (.55 + .35 * hiK) + ')' : 'rgba(143,96,63,.42)'; c.fillRect(x, y, pw * f, ph); }
       g.hair(.07); c.beginPath(); for (var l = 1; l < 8; l++) { c.moveTo(x + 3, y + l * ph / 8 + .5); c.lineTo(x + pw - 3, y + l * ph / 8 + .5); } c.stroke();
       g.hair(.45); c.strokeRect(x + .5, y + .5, pw - 1, ph - 1);
       if (f > 0 && f < 1) { c.strokeStyle = PET; c.lineWidth = 1.5; c.beginPath(); c.moveTo(x + pw * f, y - 3); c.lineTo(x + pw * f, y + ph + 3); c.stroke(); }
@@ -138,7 +138,7 @@
     g.text('3 × 40 FT CONTAINERS · LOOSE EPS', pad, 24, { col: LT(.55) });
     var vol = 3 * inner * (1 - k) + dense * k;
     g.text(vol > 10 ? Math.round(vol) + ' m³' : vol.toFixed(1) + ' m³', W - pad, 30, { al: 'right', col: '#fff', f: '700 ' + (narrow ? 20 : 26) + 'px ' + DISP });
-    g.text(k > .97 ? 'DENSIFIED · ≈ ' + Math.round(ratio) + ' : 1' : 'LOOSE', W - pad, 46, { al: 'right', col: k > .97 ? '#7FB3BE' : LT(.55) });
+    g.text(k > .97 ? 'DENSIFIED · ≈ ' + Math.round(ratio) + ' : 1' : 'LOOSE', W - pad, 46, { al: 'right', col: k > .97 ? '#BB9982' : LT(.55) });
     // containers + foam
     var r = rnd(11), cell = Math.max(5, scale * .42);
     for (var n = 0; n < 3; n++) {
@@ -158,7 +158,7 @@
     c.strokeStyle = LT(.45); c.beginPath(); c.moveTo(pad, gy + .5); c.lineTo(W - pad, gy + .5); c.stroke();
     // dense block + figure
     c.fillStyle = 'rgba(236,234,227,' + (.95 * bk) + ')'; c.fillRect(bx, gy - bs * bk, bs, bs * bk);
-    c.strokeStyle = 'rgba(127,179,190,' + bk + ')'; c.strokeRect(bx + .5, gy - bs + .5, bs - 1, bs - 1);
+    c.strokeStyle = 'rgba(187,153,130,' + bk + ')'; c.strokeRect(bx + .5, gy - bs + .5, bs - 1, bs - 1);
     var ph = 1.8 * scale; g.person(px, gy, ph, LT(.9));
     // dimensions
     function dimH(x1, x2, y, lab, al) {

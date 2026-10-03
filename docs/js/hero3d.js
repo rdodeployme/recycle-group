@@ -21,7 +21,7 @@
   renderer.toneMapping = T.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.25;
 
-  var BG = 0x0E1114, PET = 0x3B8493, DEEP = 0x1F5561;
+  var BG = 0x0E1114, PET = 0x8F603F, DEEP = 0x5E3A22;
   var scene = new T.Scene(); scene.background = new T.Color(BG); scene.fog = new T.Fog(BG, 110, 340);
   var cam = new T.PerspectiveCamera(38, 1, 0.5, 600);
   function C(h) { return new T.Color(h).convertSRGBToLinear(); }
@@ -30,7 +30,7 @@
   scene.add(new T.HemisphereLight(0xb7cdd2, 0x0b0e11, 0.85));
   var key = new T.DirectionalLight(0xfff3e6, 1.25); key.position.set(-80, 120, 60); scene.add(key);
   var rim = new T.DirectionalLight(PET, 0.9); rim.position.set(90, 40, -120); scene.add(rim);
-  [[-20, 10, 4], [10, 10, 4], [40, 10, 4]].forEach(function (p) { var l = new T.PointLight(0x9fdce6, 1.1, 60, 2); l.position.set(p[0], p[1], p[2]); scene.add(l); });
+  [[-20, 10, 4], [10, 10, 4], [40, 10, 4]].forEach(function (p) { var l = new T.PointLight(0xe3bca2, 1.1, 60, 2); l.position.set(p[0], p[1], p[2]); scene.add(l); });
 
   function rib(base, line, rx) {
     var c = document.createElement('canvas'); c.width = 128; c.height = 32; var x = c.getContext('2d');
@@ -40,11 +40,11 @@
 
   // ground and roads
   var ground = new T.Mesh(new T.PlaneGeometry(700, 700), std(0x14191d, { roughness: 1 })); ground.rotation.x = -Math.PI / 2; scene.add(ground);
-  var grid = new T.GridHelper(400, 80, 0x1d3338, 0x172025); grid.position.y = 0.02; grid.material.transparent = true; grid.material.opacity = 0.5; scene.add(grid);
+  var grid = new T.GridHelper(400, 80, 0x37281e, 0x172025); grid.position.y = 0.02; grid.material.transparent = true; grid.material.opacity = 0.5; scene.add(grid);
   var roadPts = [[-70, 30], [-20, 34], [40, 32], [78, 22], [86, -6], [70, -40], [20, -46], [-40, -44], [-82, -30], [-88, 4]].map(function (p) { return new T.Vector3(p[0], 0.1, p[1]); });
   var road = new T.CatmullRomCurve3(roadPts, true, 'catmullrom', 0.5);
   var roadMesh = new T.Mesh(new T.TubeGeometry(road, 300, 3.4, 8, true), std(0x252c31, { roughness: 1 })); roadMesh.scale.y = 0.03; scene.add(roadMesh);
-  var lane = new T.Mesh(new T.TubeGeometry(road, 300, 0.12, 4, true), new T.MeshBasicMaterial({ color: 0x3a6e78 })); lane.position.y = 0.12; lane.scale.y = 0.5; scene.add(lane);
+  var lane = new T.Mesh(new T.TubeGeometry(road, 300, 0.12, 4, true), new T.MeshBasicMaterial({ color: 0x76543c })); lane.position.y = 0.12; lane.scale.y = 0.5; scene.add(lane);
 
   // weighbridge where the road enters
   var wbP = road.getPointAt(0.06), wbT = road.getTangentAt(0.06);
@@ -60,7 +60,7 @@
   var wall = new T.Mesh(new T.BoxGeometry(65, 13, 0.6), std(0xffffff, { map: rib('#2b3439', '#20282c', 24), roughness: 0.7 })); wall.position.set(0, 6.5, -14.3); shed.add(wall);
   var roofM = std(0xffffff, { map: rib('#323c42', '#272f34', 30), roughness: 0.6, metalness: 0.3 });
   for (var r = 0; r < 4; r++) { var rf = new T.Mesh(new T.BoxGeometry(66, 0.5, 6.4), roofM); rf.position.set(0, 13.3 + (r % 2) * 0.6, -11 + r * 7.3); shed.add(rf);
-    var sky = new T.Mesh(new T.BoxGeometry(64, 0.1, 0.8), new T.MeshBasicMaterial({ color: 0x6fc6d3 })); sky.position.set(0, 13.6 + (r % 2) * 0.6, -7.6 + r * 7.3); shed.add(sky); }
+    var sky = new T.Mesh(new T.BoxGeometry(64, 0.1, 0.8), new T.MeshBasicMaterial({ color: 0xcf9973 })); sky.position.set(0, 13.6 + (r % 2) * 0.6, -7.6 + r * 7.3); shed.add(sky); }
   // bays with material piles
   var bayCols = [0x8f989e, 0x9b7b55, 0x8a6a44, 0xd8d2c5, 0xf0efea, 0x6d7a52, 0xa8704a, 0x2d3439, 0x7f8a92, 0x5a4632];
   var conc = std(0x9a9890, { roughness: 0.95 });
@@ -91,8 +91,8 @@
   var GLOW = (function () { var c = document.createElement('canvas'); c.width = c.height = 64; var x = c.getContext('2d'); var g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.3, 'rgba(255,255,255,.35)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new T.CanvasTexture(c); })();
   [[-40, -24], [32, 22], [70, -30], [-70, 18]].forEach(function (p) {
     var pole = new T.Mesh(new T.CylinderGeometry(0.25, 0.35, 22, 8), colM); pole.position.set(p[0], 11, p[1]); scene.add(pole);
-    var head = new T.Mesh(new T.BoxGeometry(2.4, 0.8, 0.6), new T.MeshBasicMaterial({ color: 0xe8f6f8 })); head.position.set(p[0], 22.2, p[1]); scene.add(head);
-    var glow = new T.Sprite(new T.SpriteMaterial({ map: GLOW, color: 0x9fdce6, transparent: true, opacity: 0.55, depthWrite: false, blending: T.AdditiveBlending })); glow.scale.set(9, 9, 1); glow.position.copy(head.position); scene.add(glow);
+    var head = new T.Mesh(new T.BoxGeometry(2.4, 0.8, 0.6), new T.MeshBasicMaterial({ color: 0xf7efe9 })); head.position.set(p[0], 22.2, p[1]); scene.add(head);
+    var glow = new T.Sprite(new T.SpriteMaterial({ map: GLOW, color: 0xe3bca2, transparent: true, opacity: 0.55, depthWrite: false, blending: T.AdditiveBlending })); glow.scale.set(9, 9, 1); glow.position.copy(head.position); scene.add(glow);
   });
 
   // trucks on the loop road

@@ -20,14 +20,14 @@
   (function () {
     var env = new T.Scene(), room = new T.Mesh(new T.SphereGeometry(20, 32, 16), new T.MeshBasicMaterial({ color: 0x1a1f23, side: T.BackSide })); env.add(room);
     function box(w, h, x, y, z, c, k) { var m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: new T.Color(c).multiplyScalar(k), side: T.DoubleSide })); m.position.set(x, y, z); m.lookAt(0, 0, 0); env.add(m); }
-    box(12, 4, 0, 14, 2, 0xffffff, 3.2); box(5, 8, 12, 4, 8, 0xf4f1ea, 2.2); box(6, 6, -12, 3, -9, 0x7fb3be, 1.6);
+    box(12, 4, 0, 14, 2, 0xffffff, 3.2); box(5, 8, 12, 4, 8, 0xf4f1ea, 2.2); box(6, 6, -12, 3, -9, 0xbb9982, 1.6);
     var pm = new T.PMREMGenerator(renderer); scene.environment = pm.fromScene(env, 0.035).texture; pm.dispose();
   })();
   scene.add(new T.HemisphereLight(0xf2f4f3, 0x1b2024, 0.25));
   var key = new T.DirectionalLight(0xfffaf2, 1.35); key.position.set(3.5, 7, 4.5); scene.add(key);
   key.castShadow = true; key.shadow.mapSize.set(1024, 1024); key.shadow.radius = 6; key.shadow.bias = -0.0006;
   var sc = key.shadow.camera; sc.left = -2.4; sc.right = 2.4; sc.top = 2.4; sc.bottom = -2.4; sc.near = 1; sc.far = 18;
-  var rim = new T.DirectionalLight(0x3B8493, 0.9); rim.position.set(-5, 3, -6); scene.add(rim);
+  var rim = new T.DirectionalLight(0x8F603F, 0.9); rim.position.set(-5, 3, -6); scene.add(rim);
 
   var W = 1.53, L = 2.03;
   function quilt() {
@@ -88,7 +88,7 @@
       var a = t * turns * Math.PI * 2; return o.set(Math.cos(a) * r, t * 0.16, Math.sin(a) * r);
     }
   }
-  var steelMat = std({ color: 0xc3cacd, metalness: 1, roughness: 0.26, envMapIntensity: 1.25, emissive: 0x3B8493, emissiveIntensity: 0 });
+  var steelMat = std({ color: 0xc3cacd, metalness: 1, roughness: 0.26, envMapIntensity: 1.25, emissive: 0x8F603F, emissiveIntensity: 0 });
   var coilG = new T.TubeGeometry(new Helix(), 120, 0.0036, 6, false);
   var CX = 10, CZ = 13, coils = new T.InstancedMesh(coilG, steelMat, CX * CZ);
   var o3 = new T.Object3D(), k = 0;
@@ -108,7 +108,7 @@
   root.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
   (function () {
     var c = document.createElement('canvas'); c.width = c.height = 256; var x = c.getContext('2d');
-    var gr = x.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, 'rgba(238,241,243,.10)'); gr.addColorStop(.55, 'rgba(127,179,190,.04)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+    var gr = x.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, 'rgba(238,241,243,.10)'); gr.addColorStop(.55, 'rgba(187,153,130,.04)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
     x.fillStyle = gr; x.fillRect(0, 0, 256, 256);
     var glow = new T.Mesh(new T.PlaneGeometry(9, 9), new T.MeshBasicMaterial({ map: new T.CanvasTexture(c), transparent: true, depthWrite: false }));
     glow.rotation.x = -Math.PI / 2; glow.position.y = -0.201; scene.add(glow);
@@ -150,7 +150,7 @@
         m.userData.k = m.userData.k == null ? 1 : m.userData.k;
         m.userData.k += ((on ? 1 : 0.28) - m.userData.k) * 0.15;
         m.color.copy(m.userData.base).multiplyScalar(m.userData.k);
-        if (m.emissive) { m.emissive.setHex(0x3B8493); m.emissiveIntensity += (((focus === n) ? (n === 'steel' ? 0.35 : 0.1) : 0) - m.emissiveIntensity) * 0.15; }
+        if (m.emissive) { m.emissive.setHex(0x8F603F); m.emissiveIntensity += (((focus === n) ? (n === 'steel' ? 0.35 : 0.1) : 0) - m.emissiveIntensity) * 0.15; }
       });
     });
     sides.forEach(function (m) { m.material.transparent = true; m.material.depthWrite = e1 < 0.3; m.material.opacity = 1 - e1; m.visible = e1 < 0.98; });

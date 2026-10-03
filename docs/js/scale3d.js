@@ -6,7 +6,7 @@
   var els = document.querySelectorAll('[data-s3d]');
   if (!els.length) return;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var PET = 0x3B8493, DEEP = 0x1F5561, STEEL = 0x8f989e, INK = 0x0E1114;
+  var PET = 0x8F603F, DEEP = 0x5E3A22, STEEL = 0x8f989e, INK = 0x0E1114;
 
   function ease(x) { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); }
   function outBack(x) { x = Math.max(0, Math.min(1, x)); var c = 1.4; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); }
@@ -162,7 +162,7 @@
       var c = document.createElement('canvas'); c.width = 256; c.height = 360; var x = c.getContext('2d');
       x.fillStyle = '#fff'; x.fillRect(0, 0, 256, 360); x.fillStyle = '#0E1114'; x.font = 'bold 22px sans-serif'; x.fillText('WEIGHBRIDGE', 20, 40); x.fillText('TICKET', 20, 66);
       x.fillStyle = '#7c868d'; for (var l = 0; l < 9; l++) x.fillRect(20, 100 + l * 26, 140 + (l * 37) % 80, 8);
-      x.fillStyle = '#3B8493'; x.fillRect(20, 330, 216, 6);
+      x.fillStyle = '#8F603F'; x.fillRect(20, 330, 216, 6);
       var tex = new T.CanvasTexture(c); tex.encoding = T.sRGBEncoding;
       var ticket = new T.Mesh(new T.BoxGeometry(3.2, 0.06, 4.5), [std(0xffffff), std(0xffffff), new T.MeshStandardMaterial({ map: tex, roughness: 0.8 }), std(0xffffff), std(0xffffff), std(0xffffff)]);
       ticket.position.set(-11, 1.6, 0.6); ticket.rotation.x = 0.95; scene.add(ticket);
@@ -240,7 +240,7 @@
         [-1, 1].forEach(function (s) { var cap = new T.Mesh(new T.SphereGeometry(0.15, 16, 10, 0, 6.3, 0, Math.PI / 2), b.material); cap.rotation.x = s * Math.PI / 2; cap.position.z = s * 0.31; g.add(cap); });
         var n = new T.Mesh(nos, steel); n.rotation.x = Math.PI / 2; n.position.z = 0.5; g.add(n); scene.add(g); return g; });
       // gas being drawn off
-      var GN = 90, gas = new T.InstancedMesh(new T.SphereGeometry(0.06, 8, 6), new T.MeshBasicMaterial({ color: 0x5fd0e0, transparent: true, opacity: 0.55, depthWrite: false }), GN), go = new T.Object3D(), gs = [];
+      var GN = 90, gas = new T.InstancedMesh(new T.SphereGeometry(0.06, 8, 6), new T.MeshBasicMaterial({ color: 0xdb9564, transparent: true, opacity: 0.55, depthWrite: false }), GN), go = new T.Object3D(), gs = [];
       for (var gi = 0; gi < GN; gi++) gs.push([X[gi % 6], Math.random(), (Math.random() - 0.5) * 0.3]); scene.add(gas);
       var man = person(); man.position.set(-3.2, 0, 1.6); scene.add(man);
       var L = 12;
@@ -315,11 +315,11 @@
     // 41,580 m³ of loose polystyrene = 17 Olympic pools
     pools: function (scene) {
       ground(scene, 190);
-      var rim = std(0x7c8187, { roughness: 0.9 }), foamM = std(0xf1f0ea, { roughness: 1 }), fills = [], fe = new T.LineBasicMaterial({ color: 0x3B8493 });
+      var rim = std(0x7c8187, { roughness: 0.9 }), foamM = std(0xf1f0ea, { roughness: 1 }), fills = [], fe = new T.LineBasicMaterial({ color: 0x8F603F });
       for (var i = 0; i < 17; i++) {
         var gx = i % 6, gz = Math.floor(i / 6), x = -165 + gx * 66, z = -32 + gz * 32;
         [[0, 13.1, 52, 0.6], [0, -13.1, 52, 0.6], [25.7, 0, 0.6, 26.8], [-25.7, 0, 0.6, 26.8]].forEach(function (r) { var b = new T.Mesh(new T.BoxGeometry(r[2], 2.2, r[3]), rim); b.position.set(x + r[0], 1.1, z + r[1]); scene.add(b); });
-        var water = new T.Mesh(new T.BoxGeometry(50, 0.1, 25), std(0x3B8493, { roughness: 0.3 })); water.position.set(x, 0.05, z); scene.add(water);
+        var water = new T.Mesh(new T.BoxGeometry(50, 0.1, 25), std(0x8F603F, { roughness: 0.3 })); water.position.set(x, 0.05, z); scene.add(water);
         var f = new T.Mesh(new T.BoxGeometry(50, 2, 25), foamM); f.position.set(x, 0, z); f.scale.y = 0.001; f.add(new T.LineSegments(new T.EdgesGeometry(f.geometry), fe)); scene.add(f); fills.push(f);
       }
       return { r: 125, el: 0.62, look: new T.Vector3(0, 0, 0), ang: 0.4, dur: 5,
@@ -329,7 +329,7 @@
     port: function (scene) {
       ground(scene, 26);
       var L = 12.19, H = 2.59, W = 2.44, boxes = [];
-      var cols = [['#3B8493', '#2f6f7c'], ['#1F5561', '#18464f'], ['#7c868d', '#68727a'], ['#3B8493', '#2f6f7c']];
+      var cols = [['#8F603F', '#794f32'], ['#5E3A22', '#4d2f1a'], ['#7c868d', '#68727a'], ['#8F603F', '#794f32']];
       [[0, 0], [1, 0], [0, 1], [1, 1]].forEach(function (p, i) {
         var tex = ribTex(cols[i][0], cols[i][1]); tex.repeat.set(6, 1);
         var side = std(0xffffff, { map: tex, roughness: 0.6, metalness: 0.2 });
