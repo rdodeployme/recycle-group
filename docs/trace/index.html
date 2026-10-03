@@ -50,7 +50,7 @@ function run(id,scroll){var t=D.filter(function(x){return x.id===id})[0];if(!t)r
  void fill.offsetWidth;fill.style.transition=rm?'none':'width .9s cubic-bezier(.6,0,.2,1)';dot.style.transition=rm?'none':'left .9s cubic-bezier(.6,0,.2,1)';
  li.forEach(function(el,i){timers.push(setTimeout(function(){var pct=n>1?(i/(n-1))*100:100;fill.style.width=pct+'%';dot.style.left=pct+'%';el.classList.add('in');},i*dur+(rm?0:150)));});
  timers.push(setTimeout(function(){split.classList.add('in');end.classList.add('in')},n*dur+(rm?0:200)));
- if(scroll)stage.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});}
+ if(scroll){var r=stage.getBoundingClientRect();if(r.top>innerHeight*.7)window.scrollBy({top:r.top-90,behavior:rm?'auto':'smooth'});}}
 document.querySelectorAll('.tr-pick').forEach(function(b){b.addEventListener('click',function(){run(b.getAttribute('data-id'),true)})});
 document.getElementById('trReplay').addEventListener('click',function(){if(cur)run(cur,false)});
 var h=(location.hash||'').slice(1);run(D.some(function(x){return x.id===h})?h:'mattress',false);
