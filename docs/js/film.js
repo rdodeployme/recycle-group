@@ -20,6 +20,37 @@
     var l = k[k.length - 1]; return [l[1], l[2]];
   }
 
+  // When a browser will not autoplay (iPhone Low Power Mode, Safari settings, data saver) the film
+  // falls back to its key frames, cross-fading on the same clock, so the section still moves.
+  function Stills(frame, list) {
+    var box = el('div', 'fx-stills', frame), imgs = (list || []).map(function (s) { var i = el('img', '', box); i.alt = ''; i.decoding = 'async'; i.setAttribute('data-src', s[1]); return i; });
+    var on = -1;
+    return {
+      ok: imgs.length > 0,
+      show: function (t) { var k = 0; for (var j = 0; j < list.length; j++) if (t >= list[j][0]) k = j; if (k !== on) { [k, (k + 1) % imgs.length].forEach(function (n) { var im = imgs[n]; if (!im.src) im.src = im.getAttribute('data-src'); }); if (imgs[on]) imgs[on].classList.remove('on'); imgs[k].classList.add('on'); on = k; } },
+      clear: function () { if (imgs[on]) imgs[on].classList.remove('on'); on = -1; }
+    };
+  }
+  function Autoplay(v, host, list, dur, onTime) {
+    var frame = host.querySelector('.fx-frame') || host, st = Stills(frame, list), fb = false, ok = false, want = false, t0 = 0, raf = 0, timer = 0;
+    function clock() { var t = ((performance.now() - t0) / 1000) % dur; st.show(t); onTime(t); raf = fb && want ? requestAnimationFrame(clock) : 0; }
+    function fallback() { if (fb || ok || !st.ok) return; fb = true; host.classList.add('fx-still'); t0 = performance.now(); if (want && !raf) raf = requestAnimationFrame(clock); }
+    if (!v.paused && v.readyState > 2) ok = true;
+    v.addEventListener('playing', function () { ok = true; if (fb) { fb = false; host.classList.remove('fx-still'); st.clear(); } });
+    function attempt() {
+      if (!want) return;
+      var pr; try { pr = v.play(); } catch (e) { fallback(); return; }
+      if (pr && pr.catch) pr.catch(function () { fallback(); });
+      clearTimeout(timer); timer = setTimeout(function () { if (want && v.paused && !ok) fallback(); }, 3500);
+    }
+    // a tap or key press counts as permission in every browser: try the real film again
+    ['pointerdown', 'touchend', 'keydown'].forEach(function (ev) { addEventListener(ev, function () { if (fb && want) attempt(); }, { passive: true }); });
+    return {
+      start: function () { want = true; attempt(); if (fb && !raf) raf = requestAnimationFrame(clock); },
+      stop: function () { want = false; clearTimeout(timer); v.pause(); }
+    };
+  }
+
   function Film(root) {
     var cfg; try { cfg = JSON.parse(root.getAttribute('data-fx')); } catch (e) { return; }
     var scrub = root.classList.contains('fx-scrub') && !reduce;
@@ -100,14 +131,17 @@
       // iOS needs a decoded frame before seeking paints
       d.addEventListener('touchstart', function once() { var pr = v.play(); if (pr && pr.then) pr.then(function () { v.pause(); }).catch(function () {}); d.removeEventListener('touchstart', once); }, { passive: true });
     } else {
-      v.loop = true; var started = false;
+      v.loop = true; v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); var started = false;
       function tick() { if (!v.paused) { render(v.currentTime); requestAnimationFrame(tick); } }
       v.addEventListener('play', function () { requestAnimationFrame(tick); });
       if (reduce) { v.src = src; v.addEventListener('loadeddata', function () { v.currentTime = Math.min(dur * .55, 6); ready(); }); }
-      else new IntersectionObserver(function (es) {
-        if (es[0].isIntersecting) { if (!started) { v.src = src; started = true; } var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
-        else v.pause();
-      }, { threshold: 0.25 }).observe(root);
+      else {
+        var ap = Autoplay(v, root, cfg.stills, dur, function (t) { render(t); });
+        new IntersectionObserver(function (es) {
+          if (es[0].isIntersecting) { if (!started) { v.preload = 'auto'; v.src = src; started = true; } ap.start(); }
+          else ap.stop();
+        }, { threshold: 0.2 }).observe(root);
+      }
     }
     root.classList.add('fx-on');
   }
@@ -121,13 +155,13 @@
     if (reduce) { v.pause(); v.removeAttribute('autoplay'); v.addEventListener('loadeddata', function () { v.currentTime = 1; }); return; }
     if (!v.currentSrc && !v.querySelector('source')) v.src = cfg.src + (narrow ? '-m' : '') + '.mp4';
     v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
-    function go() { if (!v.paused) return; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
-    go(); v.addEventListener('loadedmetadata', go); v.addEventListener('canplay', go);
-    // browsers that hold autoplay back (power saving, data saver) start on the first interaction
-    ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach(function (ev) { addEventListener(ev, go, { passive: true, once: true }); });
+    var clockT = 0, usingStills = false;
+    var ap = Autoplay(v, root, cfg.stills, cfg.dur, function (t) { usingStills = true; clockT = t; });
+    v.addEventListener('playing', function () { usingStills = false; });
+    ap.start(); v.addEventListener('loadedmetadata', function () { if (v.paused) ap.start(); });
     var lastI = -1;
     function tick() {
-      var t = v.currentTime, i = 0; for (var k = 0; k < rows.length; k++) if (t >= rows[k].t) i = k;
+      var t = usingStills ? clockT : v.currentTime, i = 0; for (var k = 0; k < rows.length; k++) if (t >= rows[k].t) i = k;
       var a = rows[i].t, b = i + 1 < rows.length ? rows[i + 1].t : (v.duration || cfg.dur);
       if (line) line.style.transform = 'scaleX(' + clamp((t - a) / (b - a), 0, 1) + ')';
       if (i !== lastI) {
@@ -139,7 +173,7 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
-    d.addEventListener('visibilitychange', function () { if (d.hidden) v.pause(); else go(); });
+    d.addEventListener('visibilitychange', function () { if (d.hidden) ap.stop(); else ap.start(); });
   }
 
   function boot() {
