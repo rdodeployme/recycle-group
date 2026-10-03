@@ -1150,3 +1150,29 @@ a.ob-c:hover{border-color:var(--green);transform:translateY(-2px)}
 @media(max-width:640px){.x-sheet-ph.dw-ph{aspect-ratio:auto;height:360px}}
 @media(max-width:640px){.dw{height:520px}.dw[data-dw="streams"]{height:380px}.dw[data-dw="report"]{height:430px}.nx3d-v .dw{height:620px}.nx3d-v .dw[data-dw="pools"]{height:470px}}
 @media(prefers-reduced-motion:reduce){.fx-ring{animation:none}.reel-cap b.in{animation:none}}
+
+/* ===== accent preview (?accent=): warm highlight used sparingly alongside petrol ===== */
+html[data-accent="ochre"]{--acc:#B8925A;--acc-soft:rgba(184,146,90,.16)}
+html[data-accent="copper"]{--acc:#C2804F;--acc-soft:rgba(194,128,79,.16)}
+html[data-accent="corten"]{--acc:#A9532F;--acc-soft:rgba(169,83,47,.18)}
+html[data-accent] .eyebrow::before{background:var(--acc)}
+html[data-accent] .nx-i i,html[data-accent] .cs-n b i{color:var(--acc)}
+html[data-accent] .mpanel .mp-i::before{background:linear-gradient(90deg,var(--acc-soft),rgba(0,0,0,0))}
+html[data-accent] .mpanel .mp-i::after{background:var(--acc)}
+html[data-accent] .mpanel .mp-i.lit i{color:var(--acc)}
+html[data-accent] .reel-cap i{color:var(--acc)}
+html[data-accent] .reel-bar i{background:var(--acc)}
+html[data-accent] .fx-tag{border-color:var(--acc)}
+html[data-accent] .fx-line{stroke:var(--acc)}
+html[data-accent] .fx-ring{stroke:var(--acc)}
+html[data-accent] .fx-ch li::before{background:var(--acc)}
+html[data-accent] .fx-ch li.on i{color:var(--acc)}
+html[data-accent] .fx-mark::before{background:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+html[data-accent] .pz-bar{background:var(--acc)}
+.acc-bar{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:4px;padding:6px;background:rgba(14,17,20,.92);border:1px solid rgba(238,241,243,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 11px/1 var(--mono,monospace);letter-spacing:.08em;text-transform:uppercase;color:rgba(238,241,243,.6);white-space:nowrap}
+.acc-bar>span{padding:0 10px 0 8px}
+.acc-bar a{display:flex;align-items:center;gap:7px;padding:8px 11px;color:#EEF1F3;text-decoration:none;border:1px solid transparent}
+.acc-bar a.on{border-color:rgba(238,241,243,.35);background:rgba(238,241,243,.06)}
+.acc-bar .sw{width:10px;height:10px;display:inline-block}
+.sw-none{background:#3B8493}.sw-ochre{background:#B8925A}.sw-copper{background:#C2804F}.sw-corten{background:#A9532F}
+@media(max-width:640px){.acc-bar>span{display:none}.acc-bar a{padding:8px 7px;font-size:10px}}

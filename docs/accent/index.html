@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Accent options | Recycle Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E1114;--bg2:#14181C;--line:rgba(238,241,243,.1);--text:#EEF1F3;--dim:rgba(238,241,243,.62);--pet:#3B8493}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:400 15px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+header{padding:48px 0 28px;border-bottom:1px solid var(--line)}
+.logo{height:20px;display:block;margin-bottom:36px}
+.eb{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);display:flex;gap:12px;align-items:center}
+.eb::before{content:"";width:22px;height:1px;background:var(--pet)}
+h1{font:800 clamp(34px,5vw,64px)/1 Archivo,sans-serif;letter-spacing:-.03em;margin:.35em 0 .4em}
+.lead{max-width:64ch;color:var(--dim);font-size:17px;margin:0}
+.sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:36px 0 8px}
+.sw a{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);padding:16px;background:var(--bg2);transition:border-color .2s}
+.sw a:hover{border-color:rgba(238,241,243,.35)}
+.chip{height:56px;margin-bottom:14px}
+.sw b{display:block;font:700 15px/1.2 Archivo,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.sw code{font:500 12px "IBM Plex Mono",monospace;color:var(--dim)}
+.sw p{margin:8px 0 10px;font-size:13.5px;color:var(--dim);line-height:1.45}
+.sw em{font:500 10.5px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;font-style:normal;color:var(--text)}
+.rec{position:relative}.rec::after{content:"Recommended";position:absolute;top:12px;right:12px;font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;padding:4px 7px;border:1px solid rgba(238,241,243,.3)}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+h2{font:700 22px/1.2 Archivo,sans-serif;margin:0 0 4px}
+.sub{color:var(--dim);margin:0 0 20px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+figure{margin:0;background:var(--bg2);border:1px solid var(--line)}
+figure img{display:block;width:100%;height:auto;cursor:zoom-in}
+figcaption{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;font:500 11px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+figcaption i{width:10px;height:10px;display:inline-block;margin-right:8px;vertical-align:-1px}
+figcaption a{color:var(--text);text-decoration:none}
+.note{padding:36px 0 60px;color:var(--dim);font-size:14px;max-width:72ch}
+.lb{position:fixed;inset:0;background:rgba(5,6,8,.92);display:none;align-items:center;justify-content:center;z-index:9;padding:24px;cursor:zoom-out}
+.lb.on{display:flex}.lb img{max-width:100%;max-height:100%}
+@media(max-width:820px){.sw{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+</style>
+<script src="/recycle-group/js/accent.js"></script></head>
+<body>
+<header><div class="wrap">
+  <img class="logo" src="../img/recycle-group-logo.png" alt="Recycle Group">
+  <div class="eb">Design decision · accent colour</div>
+  <h1>One warm highlight, used sparingly.</h1>
+  <p class="lead">Petrol stays the brand accent for buttons, links and progress. The warm colour only marks what to look at: headline units, the active item in the hero list, film call-outs and the small rule before each eyebrow. Three options against the current site, on the same frames.</p>
+  <div class="sw">
+    <a href="../?accent=none"><div class="chip" style="background:#3B8493"></div><b>Current</b><code>Petrol only · #3B8493</code><p>No warm accent. What is live today.</p><em>Open live →</em></a>
+    <a href="../?accent=ochre"><div class="chip" style="background:#B8925A"></div><b>Ochre</b><code>#B8925A</code><p>Soft and earthy, close to sandstone. The safest of the three.</p><em>Open live →</em></a>
+    <a class="rec" href="../?accent=copper"><div class="chip" style="background:#C2804F"></div><b>Burnt copper</b><code>#C2804F</code><p>Clearly warm but restrained. Reads as recovered metal and sits opposite petrol.</p><em>Open live →</em></a>
+    <a href="../?accent=corten"><div class="chip" style="background:#A9532F"></div><b>Corten rust</b><code>#A9532F</code><p>Deeper and moodier. Industrial, but quieter on the dark footage.</p><em>Open live →</em></a>
+  </div>
+</div></header>
+<main class="wrap" id="views"></main>
+<div class="wrap note">"Open live" loads the real site with that accent switched on; a bar at the bottom of every page switches between the options while you browse. Nothing changes on the public site until one is chosen.</div>
+<div class="lb" id="lb"><img alt=""></div>
+<script>
+var O=[['none','Current, petrol only','#3B8493'],['ochre','Ochre','#B8925A'],['copper','Burnt copper','#C2804F'],['corten','Corten rust','#A9532F']];
+var V=[['hero','Home hero','The active row in the material list, the reel counter and the eyebrow rule.'],['nums','Numbers band','Units on the headline figures.'],['film','Transfer station film','Call-out lines, the active chapter and the film marker.']];
+var m=document.getElementById('views');
+m.innerHTML=V.map(function(v){return '<section><h2>'+v[1]+'</h2><p class="sub">'+v[2]+'</p><div class="grid">'+O.map(function(o){return '<figure><img loading="lazy" src="'+o[0]+'-'+v[0]+'.jpg" alt="'+v[1]+', '+o[1]+'"><figcaption><span><i style="background:'+o[2]+'"></i>'+o[1]+'</span><a href="../'+(v[0]==='film'?'transfer-stations/':'')+'?accent='+o[0]+'">Open live →</a></figcaption></figure>'}).join('')+'</div></section>'}).join('');
+var lb=document.getElementById('lb');
+m.addEventListener('click',function(e){if(e.target.tagName==='IMG'){lb.firstChild.src=e.target.src;lb.classList.add('on')}});
+lb.addEventListener('click',function(){lb.classList.remove('on')});
+</script>
+<script src="/recycle-group/js/polish.js" defer></script></body>
+</html>
