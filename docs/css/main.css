@@ -1167,6 +1167,7 @@ html .fx-ch li::before{background:var(--acc)}
 html .fx-ch li.on i{color:var(--acc)}
 html .fx-mark::before{background:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
 html .pz-bar{background:var(--acc)}
+html .btn-solid{background:var(--acc);border-color:var(--acc);color:#0E1114}
 
 /* ===== closing CTA band: dark with footage, matches the rest of the site (3 Oct) ===== */
 .sec.cta{position:relative;overflow:hidden;background:#0E1114;--bg:#0E1114;--bg2:#14181C;--bg3:#1C2126;--text:#EEF1F3;--muted:rgba(238,241,243,.62);--dim:rgba(238,241,243,.62);--line:rgba(238,241,243,.1);--line2:rgba(238,241,243,.1);color:#EEF1F3;border-top:1px solid rgba(238,241,243,.08)}
@@ -1174,7 +1175,7 @@ html .pz-bar{background:var(--acc)}
 .sec.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,17,20,.94) 0,rgba(14,17,20,.82) 45%,rgba(14,17,20,.55) 100%),linear-gradient(0deg,rgba(14,17,20,.9) 0,rgba(14,17,20,0) 40%)}
 .sec.cta>.wrap{position:relative;z-index:1}
 html body .sec.cta .eyebrow::before{background:var(--acc)}
-html body .sec.cta .btn-solid{background:#3B8493;border-color:#3B8493;color:#fff}
+html body .sec.cta .btn-solid{background:var(--acc);border-color:var(--acc);color:#0E1114}
 html body .sec.cta .btn-solid:hover{background:transparent;border-color:#EEF1F3;color:#EEF1F3}
 html body .sec.cta .tlink{color:#EEF1F3}
 html body .sec.cta .tlink:hover{color:#EEF1F3;border-bottom-color:var(--acc)}
