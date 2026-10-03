@@ -40,7 +40,7 @@
       var now = performance.now(), t = ((now - t0) / 1000) % dur;
       if (mode === 'seek') {
         if (v.readyState >= 1 && !v.seeking) { var dt = t - v.currentTime; if (dt > 0.04 || dt < -0.5) { try { v.currentTime = t; } catch (e) {} } }
-        if (now - since > 5000 && v.readyState < 2 && st.ok) { mode = 'stills'; host.classList.add('fx-still'); }
+        if (now - since > 5000 && now - seekedAt > 5000 && st.ok) { mode = 'stills'; host.classList.add('fx-still'); }
       }
       if (mode === 'stills') st.show(t);
       onTime(t);
@@ -50,6 +50,7 @@
       if (mode || ok) return; mode = 'seek'; since = performance.now(); t0 = since - (v.currentTime || 0) * 1000; v.preload = 'auto';
       if (want && !raf) raf = requestAnimationFrame(clock);
     }
+    var seekedAt = 0; v.addEventListener('seeked', function () { seekedAt = performance.now(); });
     if (!v.paused && v.readyState > 2) ok = true;
     v.addEventListener('playing', function () { ok = true; if (mode) { mode = ''; host.classList.remove('fx-still'); st.clear(); } });
     function attempt() {
