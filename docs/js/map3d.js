@@ -21,7 +21,7 @@
   svg.querySelectorAll('path.sm-st').forEach(function (p) {
     var d = p.getAttribute('d') || ''; if (!d) return;
     var name = (p.querySelector('title') || {}).textContent || '';
-    var hot = /Victoria|Queensland/.test(name);
+    var hot = /Victoria|Queensland|New South Wales|Australian Capital Territory|South Australia|Western Australia/.test(name);
     var subs = d.match(/M[^M]+/g) || [];
     subs.forEach(function (sub) {
       var pts = (sub.match(/-?[\d.]+,-?[\d.]+/g) || []).map(function (s) { var a = s.split(','); return new T.Vector2(+a[0] - CX, -(+a[1] - CZ)); });
@@ -58,7 +58,7 @@
   });
 
   // camera: whole continent, then fly to a pin when a site is chosen
-  var home = { t: new T.Vector3(40, 0, 40), d: 1050, el: 0.95, az: 0.12 };
+  var home = { t: new T.Vector3(-5, 0, 40), d: 1230, el: 0.95, az: 0.12 };
   var view = { t: home.t.clone(), d: home.d, el: home.el, az: home.az }, goal = { t: home.t.clone(), d: home.d, el: home.el, az: home.az };
   var active = null;
   function fly(p) { var pin = pins.filter(function (x) { return x.p === p; })[0]; if (!pin) return; active = p; goal.t.copy(pin.pos); goal.d = 260; goal.el = 0.78; goal.az = 0.35; }
@@ -74,17 +74,28 @@
     var narrow = wrap.clientWidth / Math.max(1, wrap.clientHeight) < 1 ? 1.35 : 1;
     cam.position.set(view.t.x + Math.sin(az) * Math.cos(view.el) * view.d * narrow, view.t.y + Math.sin(view.el) * view.d * narrow, view.t.z + Math.cos(az) * Math.cos(view.el) * view.d * narrow);
     cam.lookAt(view.t);
-    var rr = wrap.getBoundingClientRect();
+    var rr = wrap.getBoundingClientRect(), W = rr.width, H = rr.height, lay = [];
     pins.forEach(function (pn, i) {
       var on = active === pn.p, s = 1 + (reduce ? 0 : ((t * 0.8 + i * 0.3) % 1) * 2.2);
       pn.ring.scale.set(s, s, s); pn.ring.material.opacity = reduce ? 0.6 : 0.85 * (1 - ((t * 0.8 + i * 0.3) % 1));
       pn.head.material.emissiveIntensity = on ? 2.2 : 1.1;
       v.copy(pn.head.position); v.y += 8; v.project(cam);
-      var tw = pn.tag.offsetWidth, th = pn.tag.offsetHeight, px = (v.x + 1) / 2 * rr.width, py = (1 - v.y) / 2 * rr.height;
-      px = pn.tag.dataset.side === 'l' ? px - tw - 10 : px + 10; py = py - th / 2 + (+pn.tag.dataset.dy) * 1.6;
-      px = Math.max(6, Math.min(rr.width - tw - 6, px)); py = Math.max(6, Math.min(rr.height - th - 6, py));
-      pn.tag.style.transform = 'translate(' + px + 'px,' + py + 'px)';
+      var tw = pn.tag.offsetWidth, th = pn.tag.offsetHeight, ax = (v.x + 1) / 2 * W, ay = (1 - v.y) / 2 * H;
+      lay.push({ pn: pn, on: on, tw: tw, th: th, ax: ax, y: ay - th / 2 + (+pn.tag.dataset.dy) * 1.6, side: pn.tag.dataset.side });
       pn.tag.classList.toggle('on', on);
+    });
+    // place tags top to bottom; a tag that would overlap one already placed tries the other side of its pin, then moves down
+    function xAt(o, side) { var x = side === 'l' ? o.ax - o.tw - 10 : o.ax + 10; return Math.max(6, Math.min(W - o.tw - 6, x)); }
+    function hits(o, x, y, placed) { for (var k = 0; k < placed.length; k++) { var q = placed[k]; if (x < q.x + q.tw + 4 && x + o.tw + 4 > q.x && y < q.y + q.th + 3 && y + o.th + 3 > q.y) return q; } return null; }
+    lay.sort(function (a, b) { return (b.on - a.on) || (a.y - b.y); });
+    var placed = [];
+    lay.forEach(function (o) {
+      var y = Math.max(6, Math.min(H - o.th - 6, o.y)), x = xAt(o, o.side), q = hits(o, x, y, placed);
+      if (q) { var x2 = xAt(o, o.side === 'l' ? 'r' : 'l'); if (!hits(o, x2, y, placed)) { x = x2; q = null; } }
+      for (var n = 0; q && n < 8; n++) { y = q.y + q.th + 3; q = hits(o, x, y, placed); }
+      y = Math.max(6, Math.min(H - o.th - 6, y));
+      o.x = x; o.y = y; placed.push(o);
+      o.pn.tag.style.transform = 'translate(' + x + 'px,' + y + 'px)';
     });
     r.render(scene, cam);
     if (running) requestAnimationFrame(frame);
