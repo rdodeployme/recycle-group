@@ -1285,7 +1285,7 @@ footer.site .logo-img{height:44px}
 @media (prefers-reduced-motion:reduce){.svc .q-row:not(.q-panel) .q-media img{transition:none}.svc a.q-row:hover .q-media img{transform:none}}
 
 /* Materials sheets: headings wrap inside their column instead of running under the drawing (6 Oct 2026) */
-.x-sheet-tx{min-width:0}.x-sheet-h{overflow-wrap:break-word}
+.x-sheet-tx{min-width:0}.x-sheet-h.long{font-size:clamp(40px,4.3vw,72px)}
 
 /* ===== Reporting: Yarta section (6 Oct 2026; content and screens from the Yarta site) ===== */
 .yt-mark{width:56px;height:56px;border-radius:50%;display:block;margin-bottom:18px}
