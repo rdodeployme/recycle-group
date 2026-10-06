@@ -1244,3 +1244,28 @@ footer.site .logo-img{height:44px}
 @media (max-width:1100px){.svc .q-row.q-panel{grid-template-columns:56px minmax(0,1fr)}.qp-in{grid-template-columns:1fr}}
 @media (max-width:720px){.svc .q-row.q-panel{grid-template-columns:40px minmax(0,1fr)}.q-six .qp-in,.q-n2o .qp-in{gap:22px}}
 @media (prefers-reduced-motion:reduce){.q6-rot b{transition:none}}
+
+/* ===== What Recycle does: two-column service cards (6 Oct 2026) ===== */
+.svc{--sg:clamp(28px,3.4vw,64px)}
+.svc .q-row:not(.q-panel){grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "n" "main" "side";gap:0;align-items:start;align-content:start;padding:clamp(24px,2.6vw,36px) 0 clamp(28px,3vw,40px)}
+.svc .q-row:not(.q-panel) .q-media{grid-area:media;display:block;aspect-ratio:3/2;margin-bottom:clamp(18px,1.8vw,24px)}
+.svc .q-row:not(.q-panel) .q-n{grid-area:n;padding-top:0;margin-bottom:10px;font-size:13px}
+.svc .q-row:not(.q-panel) .q-main{grid-area:main}
+.svc .q-row:not(.q-panel) .q-q{font-size:clamp(24px,2.3vw,36px);line-height:1.04}
+.svc .q-row:not(.q-panel) .q-main p{font-size:15.5px;max-width:54ch}
+.svc .q-row:not(.q-panel) .q-side{grid-area:side;margin-top:18px}
+.svc .q-row:not(.q-panel) .q-tag{margin-bottom:10px}
+.svc .q-row:not(.q-panel) .q-media img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.svc a.q-row:hover .q-media img{transform:scale(1.03)}
+@media (min-width:760px){
+  .svc .q-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--sg);border-top:0}
+  .svc .q-row:not(.q-panel)::before{inset:0 calc(-.5*var(--sg) + 4px)}
+  .svc .q-row.q-panel{grid-column:1/-1}
+  .svc .q-row.q-wide{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--sg);grid-template-areas:"media n" "media main" "media side";grid-template-rows:auto auto 1fr;align-items:start}
+  .svc .q-row.q-wide::before{inset:0 calc(-1*var(--pad))}
+  .svc .q-row.q-wide .q-media{margin-bottom:0}
+  .svc .q-row.q-wide .q-n{padding-top:clamp(4px,1vw,14px)}
+  .svc .q-row.q-wide .q-q{font-size:clamp(28px,3vw,46px)}
+}
+@media (max-width:759px){.svc .q-row:not(.q-panel) .q-media{aspect-ratio:16/10}}
+@media (prefers-reduced-motion:reduce){.svc .q-row:not(.q-panel) .q-media img{transition:none}.svc a.q-row:hover .q-media img{transform:none}}
