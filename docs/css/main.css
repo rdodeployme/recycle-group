@@ -1245,8 +1245,8 @@ footer.site .logo-img{height:44px}
 @media (max-width:720px){.svc .q-row.q-panel{grid-template-columns:40px minmax(0,1fr)}.q-six .qp-in,.q-n2o .qp-in{gap:22px}}
 @media (prefers-reduced-motion:reduce){.q6-rot b{transition:none}}
 
-/* ===== What Recycle does: two-column service cards (6 Oct 2026) ===== */
-.svc{--sg:clamp(28px,3.4vw,64px)}
+/* ===== What Recycle does: service card grid, 3 / 2 / 1 columns (6 Oct 2026) ===== */
+.svc{--sg:clamp(28px,3vw,56px)}
 .svc .q-row:not(.q-panel){grid-template-columns:minmax(0,1fr);grid-template-areas:"media" "n" "main" "side";gap:0;align-items:start;align-content:start;padding:clamp(24px,2.6vw,36px) 0 clamp(28px,3vw,40px)}
 .svc .q-row:not(.q-panel) .q-media{grid-area:media;display:block;aspect-ratio:3/2;margin-bottom:clamp(18px,1.8vw,24px)}
 .svc .q-row:not(.q-panel) .q-n{grid-area:n;padding-top:0;margin-bottom:10px;font-size:13px}
@@ -1261,11 +1261,25 @@ footer.site .logo-img{height:44px}
   .svc .q-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--sg);border-top:0}
   .svc .q-row:not(.q-panel)::before{inset:0 calc(-.5*var(--sg) + 4px)}
   .svc .q-row.q-panel{grid-column:1/-1}
-  .svc .q-row.q-wide{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--sg);grid-template-areas:"media n" "media main" "media side";grid-template-rows:auto auto 1fr;align-items:start}
-  .svc .q-row.q-wide::before{inset:0 calc(-1*var(--pad))}
-  .svc .q-row.q-wide .q-media{margin-bottom:0}
-  .svc .q-row.q-wide .q-n{padding-top:clamp(4px,1vw,14px)}
-  .svc .q-row.q-wide .q-q{font-size:clamp(28px,3vw,46px)}
+}
+/* tablet: 2 columns; cards 03, 11, 29 run full width so no row is left half empty */
+@media (min-width:760px) and (max-width:1099px){
+  .svc .q-row.q-w2{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--sg);grid-template-areas:"media n" "media main" "media side";grid-template-rows:auto auto 1fr}
+  .svc .q-row.q-w2::before{inset:0 calc(-1*var(--pad))}
+  .svc .q-row.q-w2 .q-media{margin-bottom:0}
+  .svc .q-row.q-w2 .q-n{padding-top:clamp(4px,1vw,14px)}
+  .svc .q-row.q-w2 .q-q{font-size:clamp(28px,3vw,40px)}
+}
+/* desktop: 3 columns; cards 11, 19, 29 are feature rows (photo across two columns, text in the third) */
+@media (min-width:1100px){
+  .svc .q-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .svc .q-row:not(.q-panel) .q-q{font-size:clamp(22px,1.8vw,28px);line-height:1.08}
+  .svc .q-row:not(.q-panel) .q-main p{font-size:15px}
+  .svc .q-row.q-w3{grid-column:1/-1;grid-template-columns:calc((100% - 2*var(--sg))*2/3 + var(--sg)) minmax(0,1fr);column-gap:var(--sg);grid-template-areas:"media n" "media main" "media side";grid-template-rows:auto auto 1fr}
+  .svc .q-row.q-w3::before{inset:0 calc(-1*var(--pad))}
+  .svc .q-row.q-w3 .q-media{margin-bottom:0;aspect-ratio:2/1}
+  .svc .q-row.q-w3 .q-n{padding-top:clamp(4px,1vw,14px)}
+  .svc .q-row.q-w3 .q-q{font-size:clamp(28px,2.5vw,40px)}
 }
 @media (max-width:759px){.svc .q-row:not(.q-panel) .q-media{aspect-ratio:16/10}}
 @media (prefers-reduced-motion:reduce){.svc .q-row:not(.q-panel) .q-media img{transition:none}.svc a.q-row:hover .q-media img{transform:none}}
