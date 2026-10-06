@@ -1207,3 +1207,40 @@ html body .sec.cta .tlink:hover{color:#EEF1F3;border-bottom-color:var(--acc)}
 .nxp + .dw{border-top:1px solid rgba(14,17,20,.1)}
 @media(max-width:720px){.nxp{aspect-ratio:auto}.nxp img{position:relative;aspect-ratio:4/3;height:auto;object-position:60% 50%}.nxp::after{bottom:auto;height:0}.nxp-t1{position:static;display:block;padding:12px 14px;max-width:none;font-size:10.5px;border-left:0;border-top:2px solid var(--acc);background:#0E1114}.nxp-t2{display:none}}
 .ob-nav{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 28px}.ob-nav a{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0E1114;text-decoration:none;border:1px solid rgba(14,17,20,.2);padding:7px 11px;transition:border-color .2s,background .2s}.ob-nav a:hover{border-color:#C2804F;background:#fff}.ob-g{scroll-margin-top:90px}.ob-t{align-self:flex-start;font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid #C2804F;color:#8E5A30;padding:3px 7px;margin-top:-4px}
+
+/* ===== RC-01 (Richard call 5 Oct 2026): new Recycle logo, circle R + wordmark, SVG ===== */
+.logo-img{height:34px;width:auto}
+footer.site .logo-img{height:44px}
+.pb-b-top img{height:22px;width:auto;filter:none}
+@media (max-width:1400px){.logo-img{height:31px}}
+@media (max-width:1180px){.logo-img{height:28px}}
+
+/* ===== RC-11/16/19/20 (Richard call 5 Oct 2026): services grid, B&W media, no-photo cards, full panels ===== */
+.svc .q-media img,.svc .q-media video,.svc .qp-media video{filter:grayscale(1) contrast(.95)}
+.svc .q-media img[src$=".svg"]{object-fit:contain;background:#121619}
+.q-nophoto{display:grid;place-items:center;background:repeating-linear-gradient(135deg,rgba(14,17,20,.045) 0 1px,transparent 1px 11px),var(--bg3)}
+.q-nophoto span{width:46px;height:46px;border-radius:50%;border:2px solid rgba(14,17,20,.16)}
+.q-row:hover .q-nophoto{background:rgba(242,246,247,.06)}.q-row:hover .q-nophoto span{border-color:rgba(242,246,247,.3)}
+.svc .q-row.q-panel{grid-template-columns:72px minmax(0,1fr);align-items:start}
+.qp-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.qp-h{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,54px);letter-spacing:-.03em;line-height:1.02;margin-top:14px}
+.qp-body>p{margin-top:14px;color:var(--muted);font-size:16px;line-height:1.6;max-width:52ch}
+.qp-body .tlink{margin-top:20px}
+.qp-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#121619}
+.qp-media video{width:100%;height:100%;object-fit:cover;display:block}
+.qp-cap{position:absolute;left:12px;bottom:12px;font:500 10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#EEF1F3;background:rgba(14,17,20,.72);padding:6px 9px}
+.q-n2o:hover::before{opacity:0}.q-n2o:hover{color:inherit}.q-n2o:hover p{color:var(--muted)}.q-n2o:hover .q-n{color:var(--green)}
+.q-six{--text:#EEF1F3;--muted:rgba(238,241,243,.7);--line:rgba(238,241,243,.14);--line2:rgba(238,241,243,.24);color:#EEF1F3}
+.q-six::before{opacity:1;background:#0E1114}
+.q-six:hover p{color:var(--muted)}.q-six .q-n,.q-six:hover .q-n{color:var(--acc)}
+.q6-rot{margin-top:26px;min-height:1.1em;font-family:var(--display);font-weight:800;font-size:clamp(24px,4.2vw,60px);overflow-wrap:anywhere;line-height:1;letter-spacing:-.02em}
+.q6-rot b{display:inline-block;color:var(--acc);transition:opacity .28s,transform .28s}
+.q6-rot b.out{opacity:0;transform:translateY(10px)}
+.q6-list{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.q6-list li{font-family:var(--display);font-weight:600;font-size:13px;padding:6px 10px;border:1px solid var(--line2);color:var(--text)}
+.rq{margin:28px 0 0;padding-left:20px;border-left:2px solid var(--acc)}
+.rq p{font-family:var(--display);font-weight:700;font-size:clamp(19px,2vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--text);max-width:40ch}
+.rq footer{margin-top:14px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+@media (max-width:1100px){.svc .q-row.q-panel{grid-template-columns:56px minmax(0,1fr)}.qp-in{grid-template-columns:1fr}}
+@media (max-width:720px){.svc .q-row.q-panel{grid-template-columns:40px minmax(0,1fr)}.q-six .qp-in,.q-n2o .qp-in{gap:22px}}
+@media (prefers-reduced-motion:reduce){.q6-rot b{transition:none}}
