@@ -1381,3 +1381,47 @@ footer.site .logo-img{height:44px}
 .ldr-sig span{font-size:14px;color:var(--lmuted)}
 .ldr-b{margin-top:26px}
 @media (max-width:760px){.ldr-g{grid-template-columns:1fr}.ldr-ph{max-width:260px}}
+
+/* The mattress problem (homepage) */
+.mp .sec-head .lead{max-width:56ch}
+.mp-fig{margin-top:8px}
+.mp-how{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,2fr);gap:clamp(28px,4vw,64px);align-items:start}
+.mp-how-h h3{font-family:var(--display);font-weight:800;font-size:clamp(26px,2.6vw,38px);line-height:1.02;letter-spacing:-.025em;color:#0E1114;margin-top:12px;max-width:16ch}
+.mp-steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid #0E1114}
+.mp-steps li{padding:22px 18px 4px 0;display:flex;flex-direction:column;gap:8px;border-right:1px solid rgba(14,17,20,.12)}
+.mp-steps li+li{padding-left:18px}.mp-steps li:last-child{border-right:0}
+.mp-steps i{font-style:normal;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.14em;color:var(--acc)}
+.mp-steps b{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;color:#0E1114}
+.mp-steps span{font-size:15px;line-height:1.55;color:rgba(14,17,20,.68)}
+.mp-nx{margin-top:clamp(48px,6vw,80px)}
+.mp-l{margin-top:28px;display:inline-flex;color:#0E1114}
+@media (max-width:1000px){.mp-how{grid-template-columns:1fr}.mp-steps{grid-template-columns:1fr 1fr}.mp-steps li:nth-child(2){border-right:0}.mp-steps li:nth-child(3){padding-left:0}.mp-steps li:nth-child(n+3){border-top:1px solid rgba(14,17,20,.12)}}
+@media (max-width:560px){.mp-steps{grid-template-columns:1fr}.mp-steps li,.mp-steps li+li{padding:18px 0;border-right:0;border-top:1px solid rgba(14,17,20,.12)}}
+/* Moved from the scale section: 96% and polystyrene, now in Why we innovate */
+.bm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:1px;margin-top:clamp(40px,5vw,72px);background:rgba(238,241,243,.08)}
+.bm>div{background:#0B0E10;padding:clamp(22px,2.4vw,36px)}
+.bm-s>b,.bm-n b{font-family:var(--display);font-weight:800;font-size:clamp(56px,6vw,96px);line-height:.9;letter-spacing:-.04em;color:#EEF1F3}
+.bm-s>b i,.bm-n i{font-style:normal;font-family:var(--display);font-weight:800;font-size:clamp(22px,2.2vw,34px);color:var(--acc);margin-left:4px;vertical-align:top}
+.bm-n b{font-size:clamp(44px,4.6vw,72px)}
+.bm-s>span,.bm-e>span{display:block;margin-top:12px;font-size:16px;line-height:1.5;color:rgba(238,241,243,.75);max-width:44ch}
+.bm-s>em{display:block;margin-top:10px;font-style:normal;font-size:13px;color:rgba(238,241,243,.5)}
+.bm-e .nxp{margin-top:20px}
+@media (max-width:860px){.bm{grid-template-columns:1fr}}
+
+/* The polystyrene problem (homepage, dark) */
+.ps{background:#0E1114;color:#EEF1F3}
+.ps .sec-head .lead{max-width:56ch}
+.ps .nxp{margin-top:8px}
+.ps .mp-how-h h3,.ps .mp-steps b,.ps .nx-i b{color:#EEF1F3}
+.ps .mp-steps,.ps .nx{border-top-color:#EEF1F3}
+.ps .mp-steps li,.ps .nx-i{border-color:rgba(238,241,243,.14)}
+.ps .mp-steps span{color:rgba(238,241,243,.7)}
+.ps .nx-l{color:#EEF1F3}.ps .nx-c{color:rgba(238,241,243,.55)}
+.ps .mp-l{color:#EEF1F3}
+.bm-one{grid-template-columns:1fr}
+.bm-one .bm-s{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:40px;align-items:end}
+.bm-one .bm-s .wte-k{grid-column:1/-1}
+@media (max-width:640px){.bm-one .bm-s{grid-template-columns:1fr}}
+.ps .h2,.ps .sec-head .h2{color:#EEF1F3}.ps .lead{color:rgba(238,241,243,.75)}.ps .eyebrow{color:rgba(238,241,243,.6)}
+.bm-one .bm-s>b{grid-row:2/4}.bm-one .bm-s>span{grid-column:2;margin-top:0}.bm-one .bm-s>em{grid-column:2}
+@media (max-width:640px){.bm-one .bm-s>b{grid-row:auto}.bm-one .bm-s>span,.bm-one .bm-s>em{grid-column:1}}
