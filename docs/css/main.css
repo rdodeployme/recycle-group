@@ -1428,3 +1428,12 @@ footer.site .logo-img{height:44px}
 
 /* The illegal dumping problem (homepage, light) */
 .dp-ph{margin-top:8px}
+
+/* Polystyrene: pool image under the convoy, with a big 37 */
+.nxp-pool{margin-top:2px}
+.nxp-big{position:absolute;z-index:1;right:clamp(16px,3vw,44px);top:clamp(10px,2vw,28px);display:flex;flex-direction:column;align-items:flex-end;line-height:.82;text-shadow:0 4px 30px rgba(14,17,20,.45)}
+.nxp-big b{font-family:var(--display);font-weight:800;font-size:clamp(110px,19vw,280px);letter-spacing:-.06em;color:#fff}
+.nxp-big em{font-style:normal;font-family:var(--display);font-weight:700;font-size:clamp(14px,1.6vw,22px);letter-spacing:.14em;text-transform:uppercase;color:#C2804F;margin-top:8px;padding-right:.4em}
+.nxp-pool .nxp-il{display:none}
+.nxp-pool::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(60% 75% at 92% 8%,rgba(14,17,20,.62) 0,rgba(14,17,20,0) 70%);pointer-events:none}
+.nxp-big{z-index:2}.nxp-big em{background:rgba(14,17,20,.78);padding:6px 10px;margin-right:.2em}
