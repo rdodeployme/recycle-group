@@ -1457,3 +1457,15 @@ footer.site .logo-img{height:44px}
 @media (max-width:1000px){.rd-g{grid-template-columns:1fr}.rd-steps{grid-template-columns:1fr 1fr}.rd-steps li:nth-child(3){border-right:1px solid rgba(14,17,20,.12);padding-left:0}.rd-steps li:nth-child(4){padding-left:18px}.rd-steps li:nth-child(n+3){border-top:1px solid rgba(14,17,20,.12)}}
 @media (max-width:560px){.rd-steps{grid-template-columns:1fr}.rd-steps li,.rd-steps li+li,.rd-steps li:nth-child(3),.rd-steps li:nth-child(4){padding-left:0;border-right:0;border-top:1px solid rgba(14,17,20,.12)}}
 .mp-ll{display:flex;flex-wrap:wrap;gap:12px 32px}
+
+/* Transfer stations: public visit block */
+.rrc{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(28px,4vw,64px);padding-top:clamp(28px,4vw,44px);border-top:2px solid #0E1114}
+.rrc-h h3{font-family:var(--display);font-weight:800;font-size:clamp(28px,3vw,44px);line-height:1;letter-spacing:-.025em;color:#0E1114;margin-top:12px}
+.rrc-h p{margin-top:16px;font-size:16px;line-height:1.55;color:rgba(14,17,20,.72);max-width:36ch}
+.rrc-tag{display:inline-block;margin-top:18px;font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--acc)}
+.rrc-l{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.rrc-l li{padding:18px 0;border-top:1px solid rgba(14,17,20,.12);display:flex;flex-direction:column;gap:6px}
+.rrc-l li:nth-child(-n+2){border-top:0;padding-top:0}
+.rrc-l b{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;color:#0E1114}
+.rrc-l span{font-size:15px;line-height:1.55;color:rgba(14,17,20,.68)}.rrc-l a{color:#0E1114;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.rrc{grid-template-columns:1fr}.rrc-l{grid-template-columns:1fr}.rrc-l li:nth-child(2){border-top:1px solid rgba(14,17,20,.12);padding-top:18px}}
