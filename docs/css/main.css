@@ -1444,3 +1444,16 @@ footer.site .logo-img{height:44px}
 
 .x-team img.pp{grid-row:span 2;width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--line2);display:block}
 .pb-talk-c{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px}
+
+/* Councils: illegal dumping program */
+.rd-g{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(28px,4vw,48px)}
+.rd-t p{font-size:16px;line-height:1.6;color:rgba(14,17,20,.72);max-width:62ch}.rd-t p+p{margin-top:14px}
+.rd-q{margin:0;padding:26px 0 0 28px;border-left:3px solid var(--acc)}
+.rd-q p{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.2vw,30px);line-height:1.1;letter-spacing:-.02em;color:#0E1114}
+.rd-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rd-steps li{padding-bottom:22px}.rd-steps li:nth-child(3){border-right:0}.rd-steps li:nth-child(4){padding-left:0}
+.rd-steps li:nth-child(n+4){border-top:1px solid rgba(14,17,20,.12)}
+.rd-end{margin-top:clamp(28px,4vw,48px);font-size:17px;line-height:1.55;color:rgba(14,17,20,.8);max-width:70ch;padding-top:22px;border-top:2px solid #0E1114}
+@media (max-width:1000px){.rd-g{grid-template-columns:1fr}.rd-steps{grid-template-columns:1fr 1fr}.rd-steps li:nth-child(3){border-right:1px solid rgba(14,17,20,.12);padding-left:0}.rd-steps li:nth-child(4){padding-left:18px}.rd-steps li:nth-child(n+3){border-top:1px solid rgba(14,17,20,.12)}}
+@media (max-width:560px){.rd-steps{grid-template-columns:1fr}.rd-steps li,.rd-steps li+li,.rd-steps li:nth-child(3),.rd-steps li:nth-child(4){padding-left:0;border-right:0;border-top:1px solid rgba(14,17,20,.12)}}
+.mp-ll{display:flex;flex-wrap:wrap;gap:12px 32px}
