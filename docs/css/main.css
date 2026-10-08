@@ -1360,3 +1360,7 @@ footer.site .logo-img{height:44px}
 .nl-m.err{color:var(--text)}.nl-m.ok{color:var(--acc)}
 @media (max-width:860px){.nl{grid-template-columns:1fr;gap:20px}}
 @media (max-width:480px){.nl-b{flex:1 1 100%;justify-content:center}}
+/* Header button "Let's work together": keep it inside the bar on mid-size screens */
+@media (max-width:1240px){.nav-cta{letter-spacing:.08em;padding:10px 12px;gap:8px}.nav-links{gap:12px;font-size:10px}}
+@media (max-width:1140px) and (min-width:901px){.nav-cta{display:none}}
+@media (min-width:1401px) and (max-width:1500px){.nav-links{gap:14px}.nav-cta{padding:11px 13px;letter-spacing:.09em}}
