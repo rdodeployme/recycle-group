@@ -40,6 +40,10 @@
 <section class="x-next"><a class="x-next-a" href="/recycle-group/who-we-work-with/rail/"><img src="/recycle-group/img/gen-c08-rail.webp" alt="" loading="lazy"><span class="x-next-in wrap"><i>Next sector</i><b>National rail and terminal operators</b><em aria-hidden="true">→</em></span></a><a class="x-next-alt" href="/recycle-group/who-we-work-with/">All sectors</a></section>
 <section class="sec cta"><div class="wrap"><div class="sec-head" style="margin-bottom:0"><div><div class="eyebrow">Partner with us</div><h2 class="h2">Tell us what you need cleared, recovered and&nbsp;reported.</h2></div><div><p class="lead" style="margin-top:0">Four things are enough to design a program. Send them through and we will come back with how we would run it.</p><div class="actions"><a href="/recycle-group/contact/" class="btn btn-solid">Partner with us</a><a href="/recycle-group/solutions/" class="tlink">See the solutions</a></div></div></div><div class="cta-need"><div><b>01</b><span>Sites</span>Where and how many</div><div><b>02</b><span>Streams</span>What needs to go</div><div><b>03</b><span>Volume</span>Rough tonnes or loads</div><div><b>04</b><span>Report</span>Who it is for</div></div></div></section>
 <footer class="site"><div class="wrap">
+  <form class="nl" action="mailto:info@recycle.net.au" method="post" novalidate>
+    <div class="nl-tx"><div class="fh">Newsletter</div><p class="nl-h">New recycling pathways, case studies and results, straight to your inbox.</p></div>
+    <div class="nl-f"><label class="nl-l" for="nlEmail">Email address</label><input id="nlEmail" class="nl-i" type="email" name="email" placeholder="Your work email" autocomplete="email" required><button class="btn btn-solid nl-b" type="submit">Sign up</button><p class="nl-m" aria-live="polite"></p></div>
+  </form>
   <div class="fgrid">
     <div><a href="/recycle-group/"><img class="logo-img" src="/recycle-group/img/recycle-logo.svg" alt="Recycle Group" width="519" height="82"></a>
       <p class="fdesc">Recycling solutions for councils, governments, corporations and infrastructure operators, designed, operated and reported on the group's own collection, transfer, processing and reuse infrastructure.</p>
@@ -54,7 +58,10 @@
       <li><a href="/recycle-group/the-group/">Our businesses</a></li><li><a href="/recycle-group/capability-statement.pdf" download>Capability statement (PDF)</a></li><li><a href="/recycle-group/initiatives/">Upcoming initiatives</a></li><li><a href="/recycle-group/impact/">Impact dashboard</a></li><li><a href="https://recycle.net.au">recycle.net.au</a></li><li><a href="https://rdodeployme.github.io/yes-site/" target="_blank" rel="noopener">Yarta</a></li></ul></div>
   </div>
   <div class="fmeta"><span>© 2026 Recycle Group Pty Ltd · includes Langi Ghiran Recycling</span><span>Responsible recovery. Sustainable outcomes.</span></div>
-</div></footer>
+</div></footer><script>(function(){var f=document.querySelector('form.nl');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var i=f.querySelector('.nl-i'),m=f.querySelector('.nl-m'),v=(i.value||'').trim();
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent='Please enter a valid email address.';m.className='nl-m err';i.focus();return;}
+window.location.href='mailto:info@recycle.net.au?subject='+encodeURIComponent('Newsletter sign-up')+'&body='+encodeURIComponent('Please add '+v+' to the Recycle Group newsletter.');
+m.textContent='Thanks. Your email app will open to confirm the sign-up.';m.className='nl-m ok';});})();</script>
 <script>
 (function(){var els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return;}
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.1});els.forEach(function(e){io.observe(e)});})();

@@ -119,6 +119,10 @@ nav.top{background:color-mix(in srgb,var(--bg) 90%,transparent)}
 </div></div></section>
 
 <footer class="site"><div class="wrap">
+  <form class="nl" action="mailto:info@recycle.net.au" method="post" novalidate>
+    <div class="nl-tx"><div class="fh">Newsletter</div><p class="nl-h">New recycling pathways, case studies and results, straight to your inbox.</p></div>
+    <div class="nl-f"><label class="nl-l" for="nlEmail">Email address</label><input id="nlEmail" class="nl-i" type="email" name="email" placeholder="Your work email" autocomplete="email" required><button class="btn btn-solid nl-b" type="submit">Sign up</button><p class="nl-m" aria-live="polite"></p></div>
+  </form>
   <div class="fgrid">
     <div><a href="/recycle-group/"><img class="logo-img" src="/recycle-group/img/recycle-group-logo.png" alt="Recycle Group"></a>
       <p class="fdesc">Recycling solutions for councils, governments, corporations and infrastructure operators, designed, operated and reported on the group's own collection, transfer, processing and reuse infrastructure.</p></div>
@@ -130,7 +134,10 @@ nav.top{background:color-mix(in srgb,var(--bg) 90%,transparent)}
       <li><a href="mailto:info@recycle.net.au">info@recycle.net.au</a></li><li><a href="tel:0460555222">0460 555 222</a></li><li>116 Furner Avenue, North Geelong VIC 3215</li><li><a href="/recycle-group/contact/">Partner with us</a></li></ul></div>
   </div>
   <div class="fmeta"><span>© 2026 Recycle Group Pty Ltd</span><span>Responsible recovery. Sustainable outcomes.</span></div>
-</div></footer>
+</div></footer><script>(function(){var f=document.querySelector('form.nl');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var i=f.querySelector('.nl-i'),m=f.querySelector('.nl-m'),v=(i.value||'').trim();
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent='Please enter a valid email address.';m.className='nl-m err';i.focus();return;}
+window.location.href='mailto:info@recycle.net.au?subject='+encodeURIComponent('Newsletter sign-up')+'&body='+encodeURIComponent('Please add '+v+' to the Recycle Group newsletter.');
+m.textContent='Thanks. Your email app will open to confirm the sign-up.';m.className='nl-m ok';});})();</script>
 <script>
 (function(){var els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return;}
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.1});els.forEach(function(e){io.observe(e)});})();

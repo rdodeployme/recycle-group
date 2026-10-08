@@ -1345,3 +1345,18 @@ footer.site .logo-img{height:44px}
 @media (max-width:1100px){.yt-cats{grid-template-columns:repeat(2,minmax(0,1fr))}.yt-loop{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){.yt-vs{grid-template-columns:1fr}.yt-loop{grid-template-columns:1fr}.yt-story-g{grid-template-columns:1fr}.yt-story-logo img{max-width:300px}.yt-els{grid-template-columns:1fr}}
 @media (max-width:480px){.yt-cats{grid-template-columns:1fr}}
+
+/* Newsletter sign-up (footer, every page) */
+.nl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px 56px;align-items:end;padding-bottom:44px;margin-bottom:48px;border-bottom:1px solid var(--line)}
+.nl .fh{margin-bottom:10px;color:var(--acc)}
+.nl-h{font-family:var(--display);font-weight:700;font-size:clamp(20px,1.9vw,26px);line-height:1.15;letter-spacing:-.01em;color:var(--text);max-width:30ch}
+.nl-f{display:flex;flex-wrap:wrap;gap:10px;position:relative}
+.nl-l{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.nl-i{flex:1 1 240px;min-width:0;background:transparent;border:1px solid var(--line2);color:var(--text);font:inherit;font-size:15px;padding:15px 18px;border-radius:0}
+.nl-i::placeholder{color:var(--dim)}
+.nl-i:focus{outline:none;border-color:var(--acc)}
+.nl-b{flex:0 0 auto}
+.nl-m{flex-basis:100%;font-size:13px;min-height:1em;color:var(--muted)}
+.nl-m.err{color:var(--text)}.nl-m.ok{color:var(--acc)}
+@media (max-width:860px){.nl{grid-template-columns:1fr;gap:20px}}
+@media (max-width:480px){.nl-b{flex:1 1 100%;justify-content:center}}
