@@ -119,7 +119,7 @@
     if (hi) { c.globalAlpha = hiK; g.text(hiLabel, pad, ry0 + 36, { col: DEEP }); c.globalAlpha = 1; }
     return ry0 + (hi ? 48 : 30);
   }
-  S.pools = function (g, W, H, p) { return pools(g, W, H, p, 71000, 0, '', 'LOOSE POLYSTYRENE · TWELVE MONTHS'); }; // RC-07: was 41580
+  S.pools = function (g, W, H, p) { return pools(g, W, H, p, 92000, 0, '', 'LOOSE POLYSTYRENE · TWELVE MONTHS'); }; // RC-07: was 41580
   S.developer = function (g, W, H, p) { return pools(g, W, H, p, 135000, 20000, '■ 20,000 m³ RETURNED TO THE SITE AS LANDSCAPING', 'TOPSOIL TAKEN ON · ONE DEVELOPER'); };
 
   // Three 40 ft containers of loose foam densified at ≈102 : 1 (6,930 m³ loose per container of product).
