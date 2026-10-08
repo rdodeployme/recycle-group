@@ -1437,3 +1437,10 @@ footer.site .logo-img{height:44px}
 .nxp-pool .nxp-il{display:none}
 .nxp-pool::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(60% 75% at 92% 8%,rgba(14,17,20,.62) 0,rgba(14,17,20,0) 70%);pointer-events:none}
 .nxp-big{z-index:2}.nxp-big em{background:rgba(14,17,20,.78);padding:6px 10px;margin-right:.2em}
+
+/* Leadership avatars and real portraits */
+.people img.pp{grid-row:span 2;width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--line2);display:block}
+.ldr-ph-img{background:#0E1114}.ldr-ph-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+.x-team img.pp{grid-row:span 2;width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--line2);display:block}
+.pb-talk-c{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px}
