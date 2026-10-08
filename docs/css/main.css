@@ -1481,3 +1481,5 @@ footer.site .logo-img{height:44px}
 .ldr-bg .ldr-sig{border-top-color:rgba(238,241,243,.2)}.ldr-bg .ldr-sig b{color:#EEF1F3}.ldr-bg .ldr-sig span{color:rgba(238,241,243,.62)}
 .ldr-bg .ldr-ph{box-shadow:0 24px 60px rgba(0,0,0,.45);outline:1px solid rgba(238,241,243,.12)}
 .ldr-bg .btn-solid{background:#EEF1F3;color:#0E1114;border-color:#EEF1F3}.ldr-bg .btn-solid:hover{background:#C2804F;border-color:#C2804F;color:#0E1114}
+.x-biz-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.x-biz-side .tbc{margin-left:0}
+@media (max-width:900px){.x-biz-side{grid-column:2;align-items:flex-start}}
