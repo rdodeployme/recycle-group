@@ -904,7 +904,7 @@ html.pz-out body{opacity:0;transition:opacity .2s ease}
 .ob .sec-head{margin-bottom:56px}
 .ob-g{display:grid;grid-template-columns:minmax(220px,1fr) 3fr;gap:40px;padding:44px 0;border-top:1px solid rgba(14,17,20,.14)}
 .ob-h span{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--deep)}
-.ob-h h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,1.9vw,28px);overflow-wrap:break-word;hyphens:auto;line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin:10px 0 12px}
+.ob-h h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,1.9vw,28px);overflow-wrap:normal;hyphens:manual;line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin:10px 0 12px}
 .ob-h p{color:rgba(14,17,20,.68);font-size:15px;max-width:34ch}
 .ob-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .ob-c{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid rgba(14,17,20,.1);padding:22px 22px 18px;color:#0E1114;text-decoration:none;transition:border-color .2s,transform .2s}
@@ -1483,3 +1483,5 @@ footer.site .logo-img{height:44px}
 .ldr-bg .btn-solid{background:#EEF1F3;color:#0E1114;border-color:#EEF1F3}.ldr-bg .btn-solid:hover{background:#C2804F;border-color:#C2804F;color:#0E1114}
 .x-biz-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.x-biz-side .tbc{margin-left:0}
 @media (max-width:900px){.x-biz-side{grid-column:2;align-items:flex-start}}
+
+.ob-c h3 .ob-sub{display:block;font-size:.62em;letter-spacing:.08em;text-transform:uppercase;opacity:.6;margin-top:4px;font-weight:600}
