@@ -49,7 +49,7 @@
   // A year of mattresses laid flat across the MCG playing surface (≈173 × 146 m oval), plan and section.
   S.mcg = function (g, W, H, p) {
     var c = g.c, narrow = W < 640, pad = narrow ? 18 : 34, head = 52, foot = narrow ? 64 : 58;
-    var sweep = ease(seg(p, .05, .5)), lk = ease(seg(p, .45, .9)), layers = Math.max(1, Math.round(40 * lk)), hNow = 10 * lk;
+    var sweep = ease(seg(p, .05, .5)), lk = ease(seg(p, .45, .9)), layers = Math.max(1, Math.round(26 * lk)), hNow = 6.4 * lk;
     var planW, planH, ex, ew, gy, topY;
     if (narrow) { planW = W - pad * 2; planH = (H - head - foot) * .52; }
     else { planW = W * .58 - pad; planH = H - head - foot - 34; }
@@ -78,7 +78,7 @@
     g.hair(.5); c.beginPath(); c.moveTo(ex, gy + .5); c.lineTo(ex + ew, gy + .5); c.stroke();
     c.save(); c.beginPath(); c.rect(bx, gy - 14 * mPx, bw, 8 * mPx); c.clip(); c.fillStyle = 'rgba(143,96,63,.08)'; c.fillRect(bx, gy - 14 * mPx, bw, 8 * mPx);
     g.hair(.12); c.beginPath(); for (var k2 = -300; k2 < 400; k2 += 7) { c.moveTo(bx + k2, gy); c.lineTo(bx + k2 + 300, gy - 300); } c.stroke(); c.restore();
-    g.text('RANGE 6–14 m', bx + 6, gy - 14 * mPx + 14, { col: 'rgba(94,58,34,.85)' });
+    g.text('RANGE 4–9 m', bx + 6, gy - 14 * mPx + 14, { col: 'rgba(94,58,34,.85)' });
     c.fillStyle = DEEP; c.fillRect(bx, gy - hNow * mPx, bw, hNow * mPx);
     c.strokeStyle = 'rgba(255,255,255,.2)'; c.lineWidth = 1; c.beginPath(); for (var l = 1; l < layers; l++) { var yy = Math.round(gy - l * .25 * mPx) + .5; c.moveTo(bx, yy); c.lineTo(bx + bw, yy); } c.stroke();
     var px = bx + bw + 22; g.person(px, gy, 1.8 * mPx);
@@ -86,7 +86,7 @@
     if (hNow > .4) g.dimV(px + 70, gy, gy - hNow * mPx, '≈ ' + hNow.toFixed(1) + ' m', 1, 'r');
     // readout
     var ry0 = H - 22;
-    g.big(num(250000 * ease(seg(p, .05, .9))), pad, ry0 - 16, narrow ? 24 : 30);
+    g.big(num(160000 * ease(seg(p, .05, .9))), pad, ry0 - 16, narrow ? 24 : 30);
     g.text('MATTRESSES · ONE YEAR', pad, ry0);
     g.big(String(layers), W - pad, ry0 - 16, narrow ? 24 : 30, { al: 'right' });
     g.text('LAYERS DEEP', W - pad, ry0, { al: 'right' });

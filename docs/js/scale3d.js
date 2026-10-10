@@ -290,7 +290,7 @@
       return { r: 7.2, el: 0.1, look: new T.Vector3(0, 0, 5), ang: 0, dur: 1, loop: 1e9,
         update: function (t, cam) { camRef = cam; if (drag === null) { vel += (0.0022 - vel) * 0.02; rot += reduce ? 0 : vel; } grp.rotation.y = rot; } };
     },
-    // 250,000 mattresses laid flat across the MCG playing surface
+    // 160,000 mattresses laid flat across the MCG playing surface
     mcg: function (scene) {
       ground(scene, 150);
       var A = 86, B = 74;
